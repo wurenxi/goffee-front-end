@@ -42,25 +42,25 @@
 
 **首页**
 
-|![首页](https://github.com/wurenxi/goffee-front-end/assets/78285074/5db00a5d-ce46-4a6f-b5ef-ee6db48fc6f4) |
+| [![首页](https://s1.ax1x.com/2023/05/22/p9IbCND.jpg)](https://imgse.com/i/p9IbCND) |
 | --------------------------------------------------------------- |
-| ![首页2](https://github.com/wurenxi/goffee-front-end/assets/78285074/67f0837f-3cc3-411b-8ff6-bcaf9502240e) |
+| [![p9IbF9H.jpg](https://s1.ax1x.com/2023/05/22/p9IbF9H.jpg)](https://imgse.com/i/p9IbF9H) |
 
 **文章详情**
 
-![文章详情](https://github.com/wurenxi/goffee-front-end/assets/78285074/34c8ba60-f1b4-4c1b-a2bf-cdaab641846c)
+[![文章详情](https://s1.ax1x.com/2023/05/22/p9Ibk3d.png)](https://imgse.com/i/p9Ibk3d)
 
 **文章列表**
 
-![文章列表](https://github.com/wurenxi/goffee-front-end/assets/78285074/5ec34240-a483-495e-93d1-e217cd3aba66)
+[![文章列表](https://s1.ax1x.com/2023/05/22/p9IbAgA.png)](https://imgse.com/i/p9IbAgA)
 
 **发表文章**
 
-![发表文章](https://github.com/wurenxi/goffee-front-end/assets/78285074/1134511a-b52a-4b10-ba18-c6b63fafcf20)
+[![发表文章](https://s1.ax1x.com/2023/05/22/p9IbZut.png)](https://imgse.com/i/p9IbZut)
 
 **个人中心**
 
-![个人中心](https://github.com/wurenxi/goffee-front-end/assets/78285074/1d3c17d3-2b8e-48a9-87f9-8baa57ab9d3b)
+[![个人中心](https://s1.ax1x.com/2023/05/22/p9IbmHf.jpg)](https://imgse.com/i/p9IbmHf)
 
 ## 环境要求
 

@@ -1,0 +1,163 @@
+@media screen and (min-width: @mobile-device) {
+  .login-bg {
+    position: fixed;
+    z-index: -999;
+    width: 100%;
+    height: 100%;
+    background: url('@/assets/img/steinsgate/login-bg.jpg') center center / cover no-repeat local;
+    background-position: top right;
+    background-repeat: no-repeat;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    animation: to_show 3s;
+  }
+
+  .wrapper {
+    margin-top: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 577px;
+    height: 507px;
+    background-color: rgba(50, 50, 50, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 0;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+
+    .top {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin: -50px 0 25px;
+      font-size: 2em;
+      color: #fff;
+      transition: 0.5s;
+
+      a {
+        text-decoration: none;
+        display: inline-block;
+        height: 100%;
+        background-image: linear-gradient(90deg, rgb(181, 53, 33), rgb(240, 200, 32));
+        background-clip: text;
+        color: transparent;
+        font-weight: 600;
+        transition: 0.5s;
+
+        &:hover {
+          background-image: linear-gradient(90deg, rgb(54, 54, 27), rgb(241, 217, 183));
+          background-clip: text;
+          color: transparent;
+          .cursor-pointer();
+        }
+      }
+    }
+
+    h2 {
+      font-size: 2em;
+      background-image: linear-gradient(90deg, rgb(54, 54, 27), rgb(241, 217, 183));
+      background-clip: text;
+      color: transparent;
+    }
+
+    .input-box {
+      position: relative;
+      width: 420px;
+      margin: 30px 0;
+      border-bottom: 2px solid #fff;
+
+      label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        transform: translateY(-50%);
+        font-size: 1.2rem;
+        /* 设置点击无效 */
+        pointer-events: none;
+        color: #fff;
+        transition: 0.5s;
+      }
+
+      input {
+        width: 100%;
+        height: 50px;
+        padding: 0 35px 0 5px;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        font-size: 1.5em;
+        color: #fff;
+        .cursor-text();
+
+        &:focus ~ label,
+        &:valid ~ label {
+          top: -5px;
+        }
+      }
+
+      svg {
+        font-size: 1.5rem;
+        position: absolute;
+        right: 8px;
+        top: 20px;
+        line-height: 60px;
+        transition: 0.5s;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+
+    button {
+      width: 320px;
+      height: 45px;
+      border: none;
+      background-color: rgba(144, 96, 53, 0.5);
+      border-radius: 40px;
+      .cursor-pointer();
+      font-size: 2em;
+      font-weight: 500;
+      color: #fff;
+      transition: 0.5s;
+
+      &:hover {
+        box-shadow: 0 0 15px #555;
+      }
+    }
+  }
+
+  .invisible {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: @smallpc-device) {
+  .wrapper {
+    margin-left: 37%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .wrapper {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes to_show {
+  0% {
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+}

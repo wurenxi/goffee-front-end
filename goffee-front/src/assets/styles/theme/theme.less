@@ -1,0 +1,90 @@
+.light-variable {
+  --font-color: #fff;
+  --common-font-color: #000;
+  --fix-navbar-text-color: #333;
+  --grey-0: #fff;
+  --grey-1: #fdfdfd;
+  --grey-4: #ccc;
+  --grey-5: #999;
+  --body-bg-shadow: #f7f7f7;
+  --grey-9-a1: rgba(0, 0, 0, 0.1);
+  --sub-title-bg: rgba(255, 255, 255, 0.5);
+  --sub-title-font-color: #000;
+  --border-color: black;
+  --common-bg: #fff;
+  --bg: rgb(236, 236, 236);
+  --index-card-bg: rgba(255, 255, 255, 0.9);
+  --footer-bg: rgba(255, 255, 255);
+  --button-font-color: #f894a4;
+  --placeholder-color: rgba(0, 0, 0, 0.5);
+  --box-shadow-color: rgba(0, 0, 0, 0.3);
+  --search-tip-hover-background: #f5f7fa;
+  --navbar-font-color: rgb(0, 0, 0, .7);
+  --wave-color-od7: rgba(253, 253, 253, 0.7);
+  --wave-color-od5: rgba(253, 253, 253, 0.5);
+  --wave-color-od3: rgba(253, 253, 253, 0.3);
+  --wave-color-o1: #fdfdfd;
+  --header-text-color: #fff;
+  --box-bg-shadow: rgba(0,0,0,0.1);
+  --text-color: #333;
+}
+
+.dark-variable {
+  --font-color: rgba(255, 255, 255, 0.7);
+  --common-font-color: rgb(188, 190, 196);
+  --fix-navbar-text-color: #aaa;
+  --grey-0: #222;
+  --grey-1: #21252b;
+  --grey-4: #666;
+  --grey-5: #aaa;
+  --body-bg-shadow: #000;
+  --grey-9-a1: rgba(51, 51, 51, 0.1)
+  --sub-title-bg: rgb(28, 28, 28);
+  --sub-title-font-color: #fff;
+  --border-color: #fff;
+  --common-bg: rgb(28, 28, 28);
+  --bg: rgb(28,28,28);
+  --index-card-bg: rgb(28, 28, 28);
+  --footer-bg: rgba(0, 0, 0);
+  --placeholder-color: rgba(255, 255, 255, 0.5);
+  --box-shadow-color: rgba(255, 255, 255, 0.5);
+  --search-tip-hover-background: linear-gradient(to right, #9999a4 0%, #60606b 100%);
+  --navbar-font-color: rgb(188, 190, 196);
+  --wave-color-od7: rgba(28, 28, 28, 0.7);
+  --wave-color-od5: rgba(28, 28, 28, 0.5);
+  --wave-color-od3: rgba(28, 28, 28, 0.3);
+  --wave-color-o1: #21252b;
+  --header-text-color: #f7f7f7;
+  --box-bg-shadow: #000;
+  --text-color: #aaa;
+}
+
+[theme='light'] {
+  .light-variable;
+  #page-header.nav-fixed > .navBar {
+    background: linear-gradient(-121deg,  #fdfbfb 0%,#eaedee 100%);;
+  }
+}
+
+[theme='dark'] {
+  .dark-variable;
+  #web_bg::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: '';
+  }
+
+  #page-header.nav-fixed > .navBar {
+    background: linear-gradient(-225deg, #2d3230 0, #322d31 100%);
+  }
+
+  .footer {
+    color: white;
+  }
+
+  img {
+    opacity: .75;
+  }
+}

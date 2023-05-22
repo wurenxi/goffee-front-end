@@ -1,0 +1,124 @@
+/* 自定义鼠标特效 */
+import { random } from 'gsap/gsap-core'
+import './sketch.min.js'
+
+export const useMouseEffect = () => {
+    class Particle {
+        alive: boolean
+        radius: number
+        wander: number
+        theta: number
+        drag: number
+        color: string
+        x: number
+        y: number
+        vx: number
+        vy: number
+
+        /* 初始化 */
+        constructor(x: number, y: number, radius: number) {
+            this.alive = true
+            this.radius = radius || 10
+            this.wander = 0.15
+            this.theta = random(0, 2 * Math.PI)
+            this.drag = 0.92
+            this.color = '#fff'
+            this.x = x || 0.0
+            this.y = y || 0.0
+            this.vx = 0.0
+            this.vy = 0.0
+        }
+
+        /* 鼠标移动 */
+        move() {
+            this.x += this.vx
+            this.y += this.vy
+            this.vx *= this.drag
+            this.vy *= this.drag
+            this.theta += random(-0.5, 0.5) * this.wander
+            this.vx += Math.sin(this.theta) * 0.1
+            this.vy += Math.cos(this.theta) * 0.1
+            this.radius *= 0.96
+            this.alive = this.radius > 0.5
+        }
+
+        /* 绘画函数 */
+        draw(ctx: any) {
+            ctx.beginPath()
+            ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI)
+            ctx.fillStyle = this.color
+            ctx.fill()
+        }
+    }
+
+    /* 常量 */
+    const MAX_PARTICLES = 280
+    /* 颜色集合 */
+    const COLORS = [
+        "rgba(255,182,185.9)",
+        "rgba(250,227,217,.9)",
+        "rgba(187,222,214.9)",
+        "rgba(138,198,209.9)",
+    ]
+
+    const mouseEffect = Sketch.create({
+        container: document.getElementById('container'),
+        retina: 'auto'
+    })
+
+    mouseEffect.setup = () => {
+        let i, x, y
+        for (i = 0; i < 20; i++) {
+            x = mouseEffect.width * 0.5 + random(-100, 100)
+            y = mouseEffect.height * 0.5 + random(-100, 100)
+            mouseEffect.spawn(x, y)
+        }
+    }
+
+    const particles: Array<Particle> = []
+    const pool: Array<Particle> = []
+    mouseEffect.spawn = (x: number, y: number) => {
+        let particle: Particle, theta: number, force: number
+        if (particles.length >= MAX_PARTICLES) {
+            pool.push(particles.shift()!)
+        }
+        particle = pool.length ? pool.pop()! : new Particle(x, y, random(5, 5))
+        particle.wander = random(0.5, 2.0)
+        particle.color = COLORS[Math.round(random(0, COLORS.length))]
+        particle.drag = random(0.9, 0.99)
+        theta = random(0, Math.PI * 2)
+        force = random(2, 0)
+        particle.vx = Math.sin(theta) * force
+        particle.vy = Math.cos(theta) * force
+        particles.push(particle)
+    }
+
+    mouseEffect.update = () => {
+        let i: number, particle: Particle
+        for(i = particles.length - 1; i >= 0; i--) {
+            particle = particles[i]
+            if(particle.alive) {
+                particle.move()
+            }else {
+                pool.push(particles.splice(i, 1)[0])
+            }
+        }
+    }
+
+    mouseEffect.draw = () => {
+        mouseEffect.globalCompositeOperation = "lighter"
+        for(let i = particles.length - 1; i >= 0; i--) {
+            particles[i].draw(mouseEffect)
+        }
+    }
+
+    mouseEffect.mousemove = () => {
+        let touch, max, i, j, n
+        for(i = 0, n = mouseEffect.touches.length; i < n; i++) {
+            (touch = mouseEffect.touches[i]), (max = random(1, 4))
+            for(j = 0; j < max; j++) {
+                mouseEffect.spawn(touch.x, touch.y)
+            }
+        }
+    }
+}

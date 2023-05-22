@@ -1,0 +1,148 @@
+// 重置element的样式
+
+:deep(.el-input.is-disabled) {
+  .cursor-not-allowed();
+  .el-input__wrapper {
+    .cursor-not-allowed();
+    .el-input__inner {
+      .cursor-not-allowed();
+    }
+  }
+}
+:deep(.el-textarea.is-disabled) {
+  .cursor-not-allowed();
+  .el-textarea__inner {
+    .cursor-not-allowed();
+  }
+}
+
+// 输入框
+:deep(.el-input__wrapper) {
+  outline: 0.2rem solid var(--border-color);
+  border-radius: 1rem;
+  font-weight: 600;
+  background-color: var(--common-bg);
+  color: var(--common-font-color);
+  font-size: 1.3rem;
+}
+
+:deep(.el-input__inner) {
+  color: var(--common-font-color);
+  font-size: 1rem;
+  .cursor-text();
+
+  &::-webkit-input-placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &:-moz-placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &::-moz-placeholder {
+    color: var(--placeholder-color);
+  }
+}
+
+:deep(.el-card) {
+  border: 0.2rem solid var(--border-color);
+  border-radius: 1rem;
+  color: var(--common-font-color);
+}
+
+:deep(.el-card__body) {
+  background-color: var(--common-bg);
+  border-color: var(--border-color);
+  background-color: var(--common-bg);
+  color: var(--common-font-color);
+}
+
+// 重置input框内的字数限制的样式
+:deep(.el-input__suffix) {
+  color: var(--common-font-color);
+  background-color: var(--common-bg);
+  transition: none;
+
+  .el-input__count {
+    .el-input__count-inner {
+      color: var(--common-font-color);
+      background-color: var(--common-bg);
+    }
+  }
+}
+
+// textarea样式
+:deep(.el-textarea__inner) {
+  border-radius: 1rem;
+  background-color: var(--common-bg);
+  color: var(--common-font-color);
+  .cursor-text();
+
+  &::-webkit-input-placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &:-moz-placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &::-moz-placeholder {
+    color: var(--placeholder-color);
+  }
+}
+
+// textarea字数限制样式
+:deep(.el-textarea) {
+  .el-input__count {
+    color: var(--common-font-color);
+    background-color: var(--common-bg);
+  }
+}
+
+// form_lable样式
+:deep(.el-form-item__label) {
+  color: var(--common-font-color);
+}
+
+/* el-autocomplete样式 */
+.searchTips {
+  width: 400px !important;
+  .el-autocomplete-suggestion__wrap {
+    background-color: var(--common-bg);
+    li {
+      color: var(--common-font-color);
+      &:hover {
+        background: var(--search-tip-hover-background);
+      }
+    }
+  }
+}
+
+/* 模态框 */
+:deep(.el-dialog) {
+  .el-dialog__title {
+    color: var(--common-font-color);
+  }
+  .el-dialog__header, .el-dialog__body, .el-dialog__footer {
+    background-color: var(--common-bg);
+    margin-right: 0;
+  }
+}
+
+/* 分页 */
+:deep(.el-pagination) {
+  button[aria-disabled='true'] {
+    .cursor-not-allowed();
+  }
+  button[aria-disabled='false'] {
+    .cursor-pointer();
+  }
+  .el-pager {
+    li[aria-current='true'] {
+      .curosr-default();
+    }
+    li[aria-current='false'] {
+      .cursor-pointer();
+    }
+  }
+}

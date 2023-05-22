@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'mao';
+    src: url('./src/assets/styles/iconfont/MaoKenZhuYuanTi-MaokenZhuyuanTi-2.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'yuan';
+    src: url('./src/assets/styles/iconfont/AaShuiYuYuanTi-2.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+#h {
+    font-family: 'mao';
+}
+#hh {
+    font-family: 'yuan';
+}

@@ -1,0 +1,76 @@
+.font-normal() {
+  font-weight: 600;
+  color: var(--common-font-color);
+}
+
+// 统一边框样式
+.border-normal() {
+  border: 0.2rem solid var(--border-color);
+  border-radius: 1rem;
+}
+
+// tag图片边框
+.border-tag(@outset, @borderwidth) {
+  border: @borderwidth solid transparent;
+  border-radius: @borderwidth;
+  border-image: url('@/assets/img/border/border-line.png') 20 33 17 25;
+  border-image-outset: @outset;
+}
+
+//
+.flex-multi(@dir: row, @jus: flex-start, @align: flex-start) {
+  display: flex;
+  justify-content: @jus;
+  align-items: @align;
+  flex-direction: @dir;
+}
+
+.flex-self(@dir: row, @jus: flex-start, @align: flex-start) {
+  display: flex;
+  justify-content: @jus;
+  align-self: @align;
+  flex-direction: @dir;
+}
+
+// flexbox 居中盒子
+.flexbox(@dir: row, @jus: center, @align: center) {
+  display: flex;
+  justify-content: @jus;
+  align-items: @align;
+  flex-direction: @dir;
+}
+
+//
+.text-line-show(@line) {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @line;
+  overflow: hidden;
+}
+
+/* 盒子阴影 */
+.shadow(@drop: 3px, @big: 5px, @color: var(--box-shadow-color)) {
+  box-shadow: @drop @drop @big @color;
+}
+
+.cursor-pointer() {
+  cursor: url(../../cursor/pointer2.cur), pointer;
+}
+
+.cursor-text() {
+  cursor: url(../../cursor/text2.cur), text;
+}
+
+.cursor-not-allowed() {
+  cursor: url(../../cursor/not-allowed2.cur), not-allowed;
+}
+
+.cursor-help() {
+  cursor: url(../../cursor/help.cur), help;
+}
+
+.curosr-default() {
+  cursor: url(../../cursor/auto2.cur), default;
+}

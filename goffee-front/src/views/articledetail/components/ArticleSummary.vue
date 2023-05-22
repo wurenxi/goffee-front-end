@@ -31,9 +31,6 @@
         <span>{{ article.viewCounts }}</span>
       </li>
     </ul>
-    <summary class="summary">
-      <p class="summary-content">描述：{{ article.summary }}</p>
-    </summary>
   </div>
 </template>
 
@@ -95,22 +92,6 @@ const props = defineProps<{
       .introduction {
         font-size: 1.3rem;
         color: #a0a0a0;
-      }
-    }
-  }
-
-  .summary {
-    position: relative;
-    padding: 0 1rem;
-    margin: 30px 0;
-    align-self: flex-start;
-
-    .summary-content {
-      color: var(--common-font-color);
-      font-size: 1.3rem;
-
-      &::first-letter {
-        font-size: 2rem;
       }
     }
   }

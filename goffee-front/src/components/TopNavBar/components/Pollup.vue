@@ -120,7 +120,7 @@ const logout = () => {
     cancelButtonText: '取消',
     type: 'warning'
   }).then(() => {
-    useUserStore().logout()
+    useUserStore().logout(userInfo.value.userId)
   })
 }
 

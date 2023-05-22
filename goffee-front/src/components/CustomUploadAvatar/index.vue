@@ -66,7 +66,7 @@ const uploadAvatar = async (options: UploadRequestOptions) => {
   const { file } = options
   loading.value = true
   let result = await uploadImage(
-    { file, bucketName: 'images', userId: userInfo.value.userId },
+    { file, bucketName: 'avatar', userId: userInfo.value.userId },
     loadingPercent
   )
   if (result) {

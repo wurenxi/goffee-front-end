@@ -137,7 +137,7 @@ const changePwd = (formEl: FormInstance | undefined) => {
       if (result) {
         // 退出登录，清空用户信息
         pwdDialogVisible.value = false
-        useUserStore().logout('修改密码成功')
+        useUserStore().logout(userInfo.value.userId, '修改密码成功')
       } else {
         return false
       }

@@ -46,7 +46,6 @@ const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]) => {
     if (hasPermission(roles, tmpRoute)) {
       if (tmpRoute.component?.toString() == 'Layout') {
         tmpRoute.component = Layout;
-        console.log();
       } else {
         const component = modules[`../../views/${tmpRoute.component}.vue`];
         if (component) {

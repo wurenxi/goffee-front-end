@@ -19,9 +19,9 @@ export function loginApi(data: LoginData): AxiosPromise<LoginResult> {
 /**
  * 注销API
  */
-export function logoutApi() {
+export function logoutApi(id: string) {
   return request({
-    url: '/api/auth/logout',
-    method: 'delete'
+    url: `/api/auth/logout/${id}`,
+    method: 'get'
   });
 }

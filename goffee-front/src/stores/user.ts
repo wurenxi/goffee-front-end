@@ -19,8 +19,8 @@ export const useUserStore = defineStore('user', () => {
   }
 
   /* 注销 */
-  const logout = async (msg?: string) => {
-    const result = await logoutAPI()
+  const logout = async (userId: string, msg?: string) => {
+    const result = await logoutAPI(userId)
     if (result) {
       useUserInfoStore().resetLoginInfo()
       token.value = ''

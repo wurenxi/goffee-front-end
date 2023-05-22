@@ -10,8 +10,8 @@ export const loginAPI = (data: LoginData) =>
   }) as AxiosPromise<LoginRsult>
 
 /* 注销API */
-export const logoutAPI = () =>
+export const logoutAPI = (id: string) =>
   request({
-    url: '/api/auth/logout',
-    method: 'delete'
+    url: `/api/auth/logout/${id}`,
+    method: 'get'
   })

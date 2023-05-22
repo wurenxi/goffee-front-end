@@ -13,6 +13,7 @@ import { useStorage } from '@vueuse/core';
 export const useUserStore = defineStore('user', () => {
   // state
   const token = useStorage('accessToken', '');
+  const userId = ref('')
   const nickname = ref('');
   const avatar = ref('');
   const roles = ref<Array<string>>([]); // 用户角色编码集合 → 判断路由权限
@@ -49,6 +50,7 @@ export const useUserStore = defineStore('user', () => {
           if (!data.roles || data.roles.length <= 0) {
             reject('getUserInfo: roles must be a non-null array!');
           }
+          userId.value = data.userId
           nickname.value = data.nickname;
           avatar.value = data.avatar;
           roles.value = data.roles;
@@ -64,7 +66,7 @@ export const useUserStore = defineStore('user', () => {
   // 注销
   function logout() {
     return new Promise<void>((resolve, reject) => {
-      logoutApi()
+      logoutApi(userId.value)
         .then(() => {
           resetRouter();
           resetToken();

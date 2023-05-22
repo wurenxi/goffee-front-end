@@ -32,7 +32,6 @@ export default {
   .create-center {
     padding: 1rem;
     background-color: var(--common-bg);
-    min-height: 75vh;
     margin: 1rem 0;
     border-radius: 1rem;
     .border-normal();

@@ -296,7 +296,7 @@ onUpdated(() => {
 @media screen and (max-width: 1200px) {
   .article-item {
     flex-direction: column !important;
-    height: 36rem !important;
+    height: 35rem !important;
     max-height: fit-content;
     width: 100% !important;
     min-width: 100% !important;
@@ -304,11 +304,11 @@ onUpdated(() => {
 
     .cover {
       width: 100% !important;
-      height: 100% !important;
+      height: 60% !important;
       margin: 0 !important;
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 92%) !important;
       border-radius: 0.625rem 0.625rem 0 0 !important;
-      background: url('@/assets/img/steinsgate/cover.jpg') top 40% center / cover no-repeat local !important;
+      background: url('@/assets/img/steinsgate/cover.jpg') top 32% center / cover no-repeat local !important;
 
       &::before {
         content: '' !important;
@@ -318,7 +318,7 @@ onUpdated(() => {
     .info {
       padding: 0 1rem 3rem !important;
       width: 100% !important;
-      height: 14rem !important;
+      height: 40% !important;
 
       .meta {
         justify-content: space-between !important;
@@ -328,7 +328,7 @@ onUpdated(() => {
       }
 
       .text {
-        display: none !important;
+        -webkit-line-clamp: 2 !important;
       }
     }
   }

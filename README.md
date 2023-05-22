@@ -1,23 +1,31 @@
 <p align="center">
-    <img src="https://img.shields.io/badge/Vue-3.2.47-brightgreen.svg"/>
-    <img src="https://img.shields.io/badge/Vite-4.1.4-green.svg"/>
-    <img src="https://img.shields.io/badge/Element Plus-2.3.0-blue.svg"/>
-    <img src="https://img.shields.io/badge/license-MIT-green.svg"/>
+    <img src="https://img.shields.io/badge/Vue3-4FC08D?&style=plastic&logo=vue.js&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Typescript-informational?&style=plastic&logo=typescript&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Vite4.1.4-646CFF?&style=plastic&logo=vite&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Pinia-21C25E?&style=plastic&logo=picpay&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Axios-5A29E4?&style=plastic&logo=axios&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Less-1D365D?&style=plastic&logo=less&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Element Plus-2.3.0-blue?&style=plastic"/>
+    <img src="https://img.shields.io/badge/license-MIT-green?&style=plastic"/>
 </p>
 <p align="center">
-<a target="_blank" href="http://vue3.youlai.tech">在线预览</a>
+<p align='center'>一款以命运石之门为主题的二次元风格博客</p>
 
-## 项目介绍
+# GoffeeBlog
 
-[vue3-element-admin](https://gitee.com/youlaiorg/vue3-element-admin) 是基于 [vue-element-admin](https://gitee.com/panjiachen/vue-element-admin) 升级的 `Vue3` 版本后台管理框架，使用 Vue3、Vite4、TypeScript、Pinia、Element Plus 当前主流技术栈开发。
+作品地址：[https://goffee.cn](https://goffee.cn)
 
-## 项目特色
+后端代码地址：暂不开放
 
-- 基于 `vue-element-admin` 升级的 `Vue3` 版本，主流技术栈，无过度自定义封装，极易上手，减少学习成本；
-- 配套 `Java` 后台接口，非 `Mock` 数据，[在线接口文档](https://www.apifox.cn/apidoc/shared-195e783f-4d85-4235-a038-eec696de4ea5/api-65851240)；
-- 从 `0` 到 `1` 的项目文档支持，[官方文档](https://www.cnblogs.com/haoxianrui/p/16090029.html)。
-- 系统功能：用户、角色、菜单、字典管和部门管理等；
-- 基础设施：动态路由，按钮权限，常用组件封装。
+前台主要功能：
+- 博客的主要功能
+- markdown以及富文本双重编辑器
+- Light/Dark主题切换
+- 文章代码块高亮
+
+后台主要功能：
+- 博客管理
+- 用户、角色、菜单管理
 
 ## 技术栈
 
@@ -30,28 +38,29 @@
 | Pinia | 新一代状态管理工具 | https://pinia.vuejs.org/ |
 | Vue Router | Vue.js 的官方路由 | https://router.vuejs.org/zh/ |
 
-## 项目预览
+## 预览
 
-**在线预览地址**： [http://vue3.youlai.tech/](http://vue3.youlai.tech/)
+**首页**
 
-**控制台 & 接口文档**
-
-| ![暗黑模式](https://s2.loli.net/2023/03/13/QvjY4zf3VCGteNF.png) |
+|![首页](https://github.com/wurenxi/goffee-front-end/assets/78285074/5db00a5d-ce46-4a6f-b5ef-ee6db48fc6f4) |
 | --------------------------------------------------------------- |
-| ![接口文档](https://s2.loli.net/2023/03/13/bH4J3O6WRgCUpwt.png) |
+| ![首页2](https://github.com/wurenxi/goffee-front-end/assets/78285074/67f0837f-3cc3-411b-8ff6-bcaf9502240e) |
 
-**权限管理系统**
+**文章详情**
 
-| ![用户管理](https://s2.loli.net/2023/03/13/L9xgT5sSMVZukQj.png) | ![image-20230313003008012](https://s2.loli.net/2023/03/13/nQg6HmrtFUkPDYv.png) |
-| --- | --- |
-| ![image-20230313003028425](https://s2.loli.net/2023/03/13/C4fDRJeTuUO7gPI.png) | ![字典管理](https://s2.loli.net/2023/03/13/BzqjHpa64wfeWhE.png) |
+![文章详情](https://github.com/wurenxi/goffee-front-end/assets/78285074/34c8ba60-f1b4-4c1b-a2bf-cdaab641846c)
 
-## 项目地址
+**文章列表**
 
-|  | Gitee | Github |
-| --- | --- | --- |
-| vue3-element-admin | [vue3-element-admin](https://gitee.com/youlaiorg/vue3-element-admin) | [vue3-element-admin](https://github.com/youlaitech/vue3-element-admin) |
-| 后端 | [youlai-boot](https://gitee.com/youlaiorg/youlai-boot) | [youlai-boot](https://github.com/hxrui/youlai-boot.git) |
+![文章列表](https://github.com/wurenxi/goffee-front-end/assets/78285074/5ec34240-a483-495e-93d1-e217cd3aba66)
+
+**发表文章**
+
+![发表文章](https://github.com/wurenxi/goffee-front-end/assets/78285074/1134511a-b52a-4b10-ba18-c6b63fafcf20)
+
+**个人中心**
+
+![个人中心](https://github.com/wurenxi/goffee-front-end/assets/78285074/1d3c17d3-2b8e-48a9-87f9-8baa57ab9d3b)
 
 ## 环境要求
 
@@ -71,16 +80,15 @@
 ## 项目启动
 
 ```bash
-# 安装 pnpm
-npm install pnpm -g
 
+# 进入goffe-front/goffee-backstage根目录
 # 安装依赖
-pnpm install
+npm install
 
 # 项目运行
-pnpm run dev
+npm run dev
 
 # 项目打包
-pnpm run build:prod
+npm run build
 
 ```

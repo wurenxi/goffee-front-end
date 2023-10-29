@@ -33,7 +33,6 @@ export default { name: 'Index' }
 import TagsAll from './components/TagsAll.vue'
 import { useChangeHeaderStyle } from '@/hooks/useChangeHeaderStyle'
 import { useBlogStore } from '@/stores/blog'
-import { useUserInfoStore } from '@/stores/user'
 import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import HomeArticleList from './components/HomeArticleList.vue'
@@ -47,7 +46,7 @@ onMounted(() => {
   queryArticlePageParam.value.pageSize = 8
   blogStore.getArticles()
   if (!useUserStore().token) {
-    useUserInfoStore().resetLoginInfo()
+    useUserStore().resetLoginInfo()
   }
 })
 

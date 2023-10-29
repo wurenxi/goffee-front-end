@@ -29,7 +29,7 @@
 import Editor from '@tinymce/tinymce-vue'
 import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css'
-import { useUserInfoStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { useEditorStore } from '@/stores/file'
 import { storeToRefs } from 'pinia'
 import { uploadImage } from '@/api/file'
@@ -46,9 +46,9 @@ const props = withDefaults(
   }
 )
 
-const userInfoStore = useUserInfoStore()
+const userStore = useUserStore()
 const editorStore = useEditorStore()
-const { userInfo } = storeToRefs(userInfoStore)
+const { userInfo } = storeToRefs(userStore)
 const { content, contentRich, text, editorName, editorTheme, richImg, mdImg } =
   storeToRefs(editorStore)
 
@@ -103,7 +103,7 @@ const editorInit = {
     'importcss'
   ],
   toolbar:
-    'undo redo | formatselect | bold italic backcolor | \
+    'undo redo | formatselect | bold italic backcolor blockquote | \
            alignleft aligncenter alignright alignjustify | \
            bullist numlist outdent indent | removeformat | codesample code | help',
   codesample_global_prismjs: true,

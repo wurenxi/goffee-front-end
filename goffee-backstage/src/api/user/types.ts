@@ -42,10 +42,6 @@ export interface MemberPageVO {
    */
   id?: string;
   /**
-   * 手机号
-   */
-  mobile?: string;
-  /**
    * 用户昵称
    */
   nickname?: string;
@@ -87,7 +83,6 @@ export interface MemberForm {
    * 用户ID
    */
   id?: string;
-  mobile?: string;
   /**
    * 昵称
    */

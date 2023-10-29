@@ -22,7 +22,7 @@ export const useUserStore = defineStore('user', () => {
   const logout = async (userId: string, msg?: string) => {
     const result = await logoutAPI(userId)
     if (result) {
-      useUserInfoStore().resetLoginInfo()
+      resetLoginInfo()
       token.value = ''
       resetRouter(msg)
     } else {
@@ -30,77 +30,125 @@ export const useUserStore = defineStore('user', () => {
     }
   }
 
-  return {
-    token,
-    login,
-    logout
+  /* 获取用户信息 */
+  const userInfo = ref<UserInfo>({
+    userId: '',
+    username: '',
+    uid: '',
+    password: '',
+    gender: 0,
+    nickname: '',
+    introduction: '',
+    roles: [],
+    email: ''
+  })
+  const getInfo = async () => {
+    const result = await getUserInfo()
+    if (result) {
+      const { data } = result
+      if (!data) {
+        Promise.reject('Verification failed, please Login again.')
+      }
+      if (!data.roles || data.roles.length <= 0) {
+        Promise.reject('getUserInfo: roles must be a non-null array!')
+      }
+      Object.assign(userInfo.value, data)
+    } else {
+      Promise.reject('获取用户信息fail')
+    }
   }
-})
 
-/* 持久化用户信息 */
-export const useUserInfoStore = defineStore(
-  'userInfo',
-  () => {
-    /* 获取信息 */
-    const userInfo = ref<UserInfo>({
+  /* 重置 */
+  function resetLoginInfo() {
+    userInfo.value = {
       userId: '',
       username: '',
       uid: '',
       password: '',
       gender: 0,
       nickname: '',
+      avatar: undefined,
       introduction: '',
       roles: [],
+      gmtCreate: undefined,
       email: ''
-    })
-    const getInfo = async () => {
-      const result = await getUserInfo()
-      if (result) {
-        const { data } = result
-        if (!data) {
-          Promise.reject('Verification failed, please Login again.')
-        }
-        if (!data.roles || data.roles.length <= 0) {
-          Promise.reject('getUserInfo: roles must be a non-null array!')
-        }
-        Object.assign(userInfo.value, data)
-      } else {
-        Promise.reject('获取用户信息fail')
-      }
-    }
-
-    /* 重置 */
-    function resetLoginInfo() {
-      userInfo.value = {
-        userId: '',
-        username: '',
-        uid: '',
-        password: '',
-        gender: 0,
-        nickname: '',
-        avatar: undefined,
-        introduction: '',
-        roles: [],
-        gmtCreate: undefined,
-        email: ''
-      }
-    }
-
-    return {
-      userInfo,
-      getInfo,
-      resetLoginInfo
-    }
-  },
-  {
-    persist: {
-      enabled: true,
-      strategies: [
-        {
-          key: 'userInfo',
-          storage: localStorage
-        }
-      ]
     }
   }
-)
+
+  return {
+    token,
+    login,
+    userInfo,
+    logout,
+    getInfo,
+    resetLoginInfo
+  }
+})
+
+/* 持久化用户信息 */
+// export const useUserInfoStore = defineStore(
+//   'userInfo',
+//   () => {
+//     /* 获取信息 */
+//     const userInfo = ref<UserInfo>({
+//       userId: '',
+//       username: '',
+//       uid: '',
+//       password: '',
+//       gender: 0,
+//       nickname: '',
+//       introduction: '',
+//       roles: [],
+//       email: ''
+//     })
+//     const getInfo = async () => {
+//       const result = await getUserInfo()
+//       if (result) {
+//         const { data } = result
+//         if (!data) {
+//           Promise.reject('Verification failed, please Login again.')
+//         }
+//         if (!data.roles || data.roles.length <= 0) {
+//           Promise.reject('getUserInfo: roles must be a non-null array!')
+//         }
+//         Object.assign(userInfo.value, data)
+//       } else {
+//         Promise.reject('获取用户信息fail')
+//       }
+//     }
+
+//     /* 重置 */
+//     function resetLoginInfo() {
+//       userInfo.value = {
+//         userId: '',
+//         username: '',
+//         uid: '',
+//         password: '',
+//         gender: 0,
+//         nickname: '',
+//         avatar: undefined,
+//         introduction: '',
+//         roles: [],
+//         gmtCreate: undefined,
+//         email: ''
+//       }
+//     }
+
+//     return {
+//       userInfo,
+//       getInfo,
+//       resetLoginInfo
+//     }
+//   },
+//   {
+//     persist: {
+//       enabled: true,
+//       strategies: [
+//         {
+//           key: 'userInfo',
+//           storage: localStorage
+//         }
+//       ]
+//     }
+//   }
+// )

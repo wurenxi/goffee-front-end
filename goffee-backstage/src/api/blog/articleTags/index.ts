@@ -4,7 +4,7 @@ import { ArticleTagsQuery, ArticleTagPageVOB, ArticleTagForm } from './types'
 
 /* 获取文章列表 */
 export const queryArticleTagList = () => request({
-  url: '/api/blog/tags/list',
+  url: '/api/backstage/blog/tag/list',
   method: 'get',
 }) as AxiosPromise<Array<ArticleTagForm>>
 
@@ -17,7 +17,7 @@ export function queryArticleTagPage(
   queryParams: ArticleTagsQuery
 ): AxiosPromise<ArticleTagPageVOB> {
   return request({
-    url: '/api/blog/tags/page',
+    url: '/api/backstage/blog/tag/page',
     method: 'get',
     params: queryParams
   });
@@ -30,7 +30,7 @@ export function queryArticleTagPage(
  */
 export function getArticleTagForm(id: number): AxiosPromise<ArticleTagForm> {
   return request({
-    url: '/api/blog/tags/get/' + id,
+    url: '/api/backstage/blog/tag/get/' + id,
     method: 'get'
   });
 }
@@ -42,7 +42,7 @@ export function getArticleTagForm(id: number): AxiosPromise<ArticleTagForm> {
  */
 export function addArticleTag(data: ArticleTagForm) {
   return request({
-    url: '/api/blog/tags/save',
+    url: '/api/backstage/blog/tag/save',
     method: 'post',
     data
   })
@@ -56,7 +56,7 @@ export function addArticleTag(data: ArticleTagForm) {
  */
 export function updateArticleTag(data: ArticleTagForm) {
   return request({
-    url: `/api/blog/tags/update`,
+    url: `/api/backstage/blog/tag/update`,
     method: 'post',
     data
   })
@@ -69,7 +69,7 @@ export function updateArticleTag(data: ArticleTagForm) {
  */
 export function deleteArticleTags(ids: string) {
   return request({
-    url: '/api/blog/tags/delete',
+    url: '/api/backstage/blog/tag/delete',
     method: 'get',
     params: {ids}
   })

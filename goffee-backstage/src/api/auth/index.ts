@@ -10,7 +10,7 @@ import { LoginData, LoginResult } from './types';
  */
 export function loginApi(data: LoginData): AxiosPromise<LoginResult> {
   return request({
-    url: '/api/auth/login',
+    url: '/api/auth/common/login',
     method: 'post',
     params: data
   });
@@ -21,7 +21,7 @@ export function loginApi(data: LoginData): AxiosPromise<LoginResult> {
  */
 export function logoutApi(id: string) {
   return request({
-    url: `/api/auth/logout/${id}`,
+    url: `/api/auth/common/logout/${id}`,
     method: 'get'
   });
 }

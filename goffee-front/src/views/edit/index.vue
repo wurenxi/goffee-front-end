@@ -53,17 +53,17 @@ import { useChangeHeaderStyle } from '@/hooks/useChangeHeaderStyle'
 import { useBlogStore } from '@/stores/blog'
 import { storeToRefs } from 'pinia'
 import { useTag } from '@/hooks/useTag'
-import { useUserInfoStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 import { useEditorStore } from '@/stores/file'
 import { removeItem } from '@/utils/storage'
 import router from '@/router'
 
 const blogStore = useBlogStore()
-const userInfoStore = useUserInfoStore()
+const userStore = useUserStore()
 const editorStore = useEditorStore()
 const { articleSections } = storeToRefs(blogStore)
-const { userInfo } = storeToRefs(userInfoStore)
+const { userInfo } = storeToRefs(userStore)
 const { content, contentRich, editorName, text, richImg, mdImg } = storeToRefs(editorStore)
 const { tags, addTagFn, canChooseTags } = useTag()
 

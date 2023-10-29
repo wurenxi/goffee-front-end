@@ -26,13 +26,20 @@ export function resetRouter(msg?: string) {
   })
 }
 
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   NProgress.start()
   const hasToken = useUserStore().token
   if (to.meta.title) {
     document.title = `${to.meta.title} - GoffeeBlog`
   }
   if (hasToken) {
+    try {
+      await useUserStore().getInfo()
+    } catch(error) {
+      // 移除 token 并跳转登录页
+      await useUserStore().resetLoginInfo()
+      next('/login')
+    }
     if (to.path === '/login') {
       next({ path: '/home' })
     } else {

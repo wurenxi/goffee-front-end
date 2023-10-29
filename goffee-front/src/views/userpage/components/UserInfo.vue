@@ -39,10 +39,10 @@
 
 <script setup lang="ts">
 import { Calendar, User, Message } from '@element-plus/icons-vue'
-import { useUserInfoStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 
-const { userInfo } = storeToRefs(useUserInfoStore())
+const { userInfo } = storeToRefs(useUserStore())
 </script>
 
 <style lang="less" scoped>

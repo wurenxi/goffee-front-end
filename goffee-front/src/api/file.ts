@@ -3,7 +3,7 @@ import type { AxiosPromise, AxiosProgressEvent } from 'axios'
 
 export const uploadImage = (data: UploadFileType, cb?: Ref<number>) =>
   request({
-    url: '/api/front/files/upload',
+    url: '/api/oss/upload',
     method: 'post',
     data,
     headers: {

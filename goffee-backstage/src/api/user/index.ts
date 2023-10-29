@@ -7,7 +7,7 @@ import { MemberForm, UserInfo, MemberPageVO, MemberQuery } from './types';
  */
 export function getUserInfo(): AxiosPromise<UserInfo> {
   return request({
-    url: '/api/member/me',
+    url: '/api/user/me',
     method: 'get'
   });
 }
@@ -21,7 +21,7 @@ export function getMemberPage(
   queryParams: MemberQuery
 ): AxiosPromise<PageResult<MemberPageVO[]>> {
   return request({
-    url: '/api/member/page',
+    url: '/api/backstage/sys/user/page',
     method: 'get',
     params: queryParams
   });
@@ -34,7 +34,7 @@ export function getMemberPage(
  */
 export function getMemberForm(userId: number): AxiosPromise<MemberForm> {
   return request({
-    url: '/api/member/' + userId + '/form',
+    url: '/api/backstage/sys/user/' + userId + '/form',
     method: 'get'
   });
 }
@@ -46,7 +46,7 @@ export function getMemberForm(userId: number): AxiosPromise<MemberForm> {
  */
 export function addMember(data: any) {
   return request({
-    url: '/api/member',
+    url: '/api/backstage/sys/user/save',
     method: 'post',
     data: data
   });
@@ -60,7 +60,7 @@ export function addMember(data: any) {
  */
 export function updateMember(id: string, data: MemberForm) {
   return request({
-    url: '/api/member/' + id,
+    url: '/api/backstage/sys/user/' + id,
     method: 'put',
     data: data
   });
@@ -74,7 +74,7 @@ export function updateMember(id: string, data: MemberForm) {
  */
 export function updateMemberStatus(id: string, status: number) {
   return request({
-    url: '/api/member/' + id + '/status',
+    url: '/api/backstage/sys/user/' + id + '/status',
     method: 'patch',
     params: { status: status }
   });
@@ -88,7 +88,7 @@ export function updateMemberStatus(id: string, status: number) {
  */
 export function updateMemberPassword(id: string, password: string) {
   return request({
-    url: '/api/member/' + id + '/password',
+    url: '/api/backstage/sys/user/' + id + '/password',
     method: 'get',
     params: { password: password }
   });
@@ -101,7 +101,7 @@ export function updateMemberPassword(id: string, password: string) {
  */
 export function deleteMembers(ids: string) {
   return request({
-    url: '/api/member/' + ids,
+    url: '/api/backstage/sys/user/' + ids,
     method: 'delete'
   });
 }

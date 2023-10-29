@@ -32,7 +32,7 @@
         <p>{{ userInfo.uid }}</p>
       </el-form-item>
       <el-form-item label="角色">
-        <p>{{ userRoles ? userRoles : 'GUEST' }}</p>
+        <p>{{ userRoles ? userRoles.replace('ROLE_', '') : 'GUEST' }}</p>
       </el-form-item>
       <el-form-item label="昵称" prop="nickname">
         <el-input :disabled="!isEdit" v-model="userFormInfo.nickname"></el-input>
@@ -91,13 +91,13 @@
 </template>
 
 <script setup lang="ts">
-import { useUserInfoStore, useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import { updateUserInfo, updateUserPwd } from '@/api/user'
 import { ElMessage, type FormInstance, type FormRules } from 'element-plus'
 import { getArticleCount } from '@/api/blog'
 
-const { userInfo } = storeToRefs(useUserInfoStore())
+const { userInfo } = storeToRefs(useUserStore())
 const userRoles = userInfo.value.roles.join(',')
 
 /* 获取用户文章数量 */
@@ -168,7 +168,7 @@ const formSubmit = async (formEl: FormInstance | undefined) => {
     if (vaild) {
       let result = await updateUserInfo(userFormInfo.value)
       if (result) {
-        useUserInfoStore().getInfo()
+        useUserStore().getInfo()
         isEdit.value = false
         ElMessage.success('修改资料成功')
       } else {

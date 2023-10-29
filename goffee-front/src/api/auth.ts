@@ -4,7 +4,7 @@ import type { AxiosPromise } from 'axios'
 /* 登录API */
 export const loginAPI = (data: LoginData) =>
   request({
-    url: '/api/auth/login',
+    url: '/api/auth/common/login',
     method: 'post',
     params: data
   }) as AxiosPromise<LoginRsult>
@@ -12,6 +12,6 @@ export const loginAPI = (data: LoginData) =>
 /* 注销API */
 export const logoutAPI = (id: string) =>
   request({
-    url: `/api/auth/logout/${id}`,
+    url: `/api/auth/common/logout/${id}`,
     method: 'get'
   })

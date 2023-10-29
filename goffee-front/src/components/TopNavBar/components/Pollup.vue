@@ -90,7 +90,7 @@
 </template>
 <script setup lang="ts">
 import { onClickOutside } from '@vueuse/core'
-import { useUserInfoStore, useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import defaultAvatar from '@/assets/img/steinsgate/defaultAvatar.jpg'
 import { ElMessageBox } from 'element-plus'
@@ -99,8 +99,8 @@ defineProps<{
   isShow: boolean
 }>()
 
-const userInfoStore = useUserInfoStore()
-const { userInfo } = storeToRefs(userInfoStore)
+const userStore = useUserStore()
+const { userInfo } = storeToRefs(userStore)
 const emit = defineEmits(['close'])
 
 let pollup = ref<HTMLElement | null>()

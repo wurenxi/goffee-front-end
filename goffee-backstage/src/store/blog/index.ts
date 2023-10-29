@@ -1,8 +1,8 @@
 import { defineStore } from "pinia";
-import type { ArticleTagForm, ArticleTagPageVOB, ArticleTagsQuery } from "@/api/articleTags/types";
-import type { ArticleSectionForm, ArticleSectionPageVOB, ArticleSectionQuery } from "@/api/articleSection/types";
-import { queryArticleTagPage, queryArticleTagList } from "@/api/articleTags";
-import { queryArticleSectionPage, queryArticleSectionList } from "@/api/articleSection";
+import type { ArticleTagForm, ArticleTagPageVOB, ArticleTagsQuery } from "@/api/blog/articleTags/types";
+import type { ArticleSectionForm, ArticleSectionPageVOB, ArticleSectionQuery } from "@/api/blog/articleSection/types";
+import { queryArticleTagPage, queryArticleTagList } from "@/api/blog/articleTags";
+import { queryArticleSectionPage, queryArticleSectionList } from "@/api/blog/articleSection";
 
 export const useBlogStore = defineStore('blog', () => {
     // common

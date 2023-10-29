@@ -4,7 +4,7 @@ import { ArticleSectionQuery, ArticleSectionPageVOB, ArticleSectionForm } from '
 
 /* 获取文章版块列表 */
 export const queryArticleSectionList = () => request({
-  url: '/api/blog/section/list',
+  url: '/api/backstage/blog/section/list',
   method: 'get',
 }) as AxiosPromise<Array<ArticleSectionForm>>
 
@@ -17,7 +17,7 @@ export function queryArticleSectionPage(
   queryParams: ArticleSectionQuery
 ): AxiosPromise<ArticleSectionPageVOB> {
   return request({
-    url: '/api/blog/section/page',
+    url: '/api/backstage/blog/section/page',
     method: 'get',
     params: queryParams
   });
@@ -30,7 +30,7 @@ export function queryArticleSectionPage(
  */
 export function getSectionForm(id: number): AxiosPromise<ArticleSectionForm> {
   return request({
-    url: '/api/blog/section/get/' + id,
+    url: '/api/backstage/blog/section/get/' + id,
     method: 'get'
   });
 }
@@ -42,7 +42,7 @@ export function getSectionForm(id: number): AxiosPromise<ArticleSectionForm> {
  */
 export function addSection(data: ArticleSectionForm) {
   return request({
-    url: '/api/blog/section/save',
+    url: '/api/backstage/blog/section/save',
     method: 'post',
     data
   })
@@ -56,7 +56,7 @@ export function addSection(data: ArticleSectionForm) {
  */
 export function updateSection(data: ArticleSectionForm) {
   return request({
-    url: `/api/blog/section/update`,
+    url: `/api/backstage/blog/section/update`,
     method: 'post',
     data
   })
@@ -69,7 +69,7 @@ export function updateSection(data: ArticleSectionForm) {
  */
 export function deleteSections(ids: string) {
   return request({
-    url: '/api/blog/section/delete',
+    url: '/api/backstage/blog/section/delete',
     method: 'get',
     params: { ids }
   })

@@ -71,12 +71,12 @@ import { useEditorStore } from '@/stores/file'
 import { useColorMode } from '@vueuse/core'
 import defaultAvatar from '@/assets/img/steinsgate/defaultAvatar.jpg'
 import topbarBanner from '@/assets/img/steinsgate/topbar-banner.jpg'
-import { useUserInfoStore, useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import { ElMessageBox } from 'element-plus'
 
 const { editorTheme } = storeToRefs(useEditorStore())
-const { userInfo } = storeToRefs(useUserInfoStore())
+const { userInfo } = storeToRefs(useUserStore())
 // 默认头像
 const avatar = ref<string>(defaultAvatar)
 // 默认banner

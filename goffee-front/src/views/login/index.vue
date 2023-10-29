@@ -40,13 +40,12 @@
 <script setup lang="ts">
 import { User, Unlock, Lock } from '@element-plus/icons-vue'
 /* useUserStore */
-import { useUserStore, useUserInfoStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { ElMessage } from 'element-plus'
 import { type LocationQuery, type LocationQueryValue, useRoute } from 'vue-router'
 import router from '@/router'
 
 const userStore = useUserStore()
-const userInfoStore = useUserInfoStore()
 const route = useRoute()
 const loginData = ref<LoginData>({ username: '', password: '' })
 const loading = ref(false)
@@ -62,7 +61,7 @@ const handleLogin = () => {
     userStore
       .login(loginData.value)
       .then(async () => {
-        await userInfoStore.getInfo()
+        await userStore.getInfo()
         const query: LocationQuery = route.query
         const redirect = (query.redirect as LocationQueryValue) ?? '/home'
         const otherQueryParams = Object.keys(query).reduce((acc: any, cur: string) => {

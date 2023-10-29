@@ -212,14 +212,6 @@
           </el-select>
         </el-form-item>
 
-        <el-form-item label="手机号码" prop="mobile">
-          <el-input
-            v-model="formData.mobile"
-            placeholder="请输入手机号码"
-            maxlength="11"
-          />
-        </el-form-item>
-
         <el-form-item label="邮箱" prop="email">
           <el-input
             v-model="formData.email"
@@ -297,14 +289,6 @@ const rules = reactive({
       trigger: 'blur'
     }
   ],
-  mobile: [
-    {
-      pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
-      message: '请输入正确的手机号码',
-      trigger: 'blur',
-      required: false,
-    }
-  ]
 });
 
 const roleList = ref<OptionType[]>();

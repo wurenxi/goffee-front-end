@@ -11,7 +11,7 @@ export const routes: RouteRecordRaw[] = [
         path: '',
         name: 'Index',
         meta: {
-          title: '首页',
+          title: '一切都是命运石之门的选择',
           isHome: true,
           keepAlive: false
         },

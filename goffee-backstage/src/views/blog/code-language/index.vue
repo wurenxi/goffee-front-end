@@ -6,13 +6,6 @@
             <el-input v-model="queryParams.keyword" placeholder="语言" clearable @keyup.enter="handleQuery" />
           </el-form-item>
   
-          <el-form-item label="状态" prop="status">
-            <el-select v-model="queryParams.status" placeholder="全部" clearable style="width: 200px">
-              <el-option label="启用" value="1" />
-              <el-option label="禁用" value="0" />
-            </el-select>
-          </el-form-item>
-  
           <el-form-item>
             <el-button type="primary" @click="handleQuery"><i-ep-search />搜索</el-button>
             <el-button @click="resetQuery"><i-ep-refresh />重置</el-button>
@@ -31,12 +24,6 @@
           <el-table-column type="selection" width="55" align="center" />
           <el-table-column label="Language text" prop="text" min-width="100" />
           <el-table-column label="Language value" prop="value" min-width="100" />
-          <el-table-column label="状态" align="center" width="100">
-            <template #default="scope">
-              <el-tag v-if="scope.row.status === 1" type="success">正常</el-tag>
-              <el-tag v-else type="info">禁用</el-tag>
-            </template>
-          </el-table-column>
   
           <el-table-column label="排序" align="center" width="80" prop="sort" />
           <el-table-column label="创建时间" align="center" prop="gmtCreate" />
@@ -66,13 +53,6 @@
           </el-form-item>
           <el-form-item label="Language Value" prop="value">
             <el-input v-model="formData.value" placeholder="please input language value" @keyup.enter="handleSubmit" />
-          </el-form-item>
-  
-          <el-form-item label="状态" prop="status">
-            <el-radio-group v-model="formData.status">
-              <el-radio :label="1">正常</el-radio>
-              <el-radio :label="0">停用</el-radio>
-            </el-radio-group>
           </el-form-item>
   
           <el-form-item label="排序" prop="sort">
@@ -142,7 +122,6 @@ const dialog = reactive<DialogOption>({
  const formData = reactive<CodeLanguageVO>({
   text: '',
   value: '',
-  status: 1,
 });
 const rules = reactive({
   text: [{ required: true, message: 'please input language text', trigger: 'blur' }],
@@ -238,7 +217,6 @@ const handleQuery = async () => {
   formData.id = undefined;
   formData.text = ''
   formData.value = ''
-  formData.status = 1;
 }
 
 onMounted(() => {

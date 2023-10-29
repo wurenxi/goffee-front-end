@@ -3,7 +3,6 @@
  */
 export interface ArticleTagsQuery extends PageQuery {
     keywords?: string;
-    status?: number;
 }
 
 /* 文章标签分页信息 */
@@ -16,10 +15,6 @@ export interface ArticleTagVOB {
      * 板块名
      */
     tagName?: string;
-    /**
-     * 状态
-     */
-    status?: number;
     /**
      * 排序
      */
@@ -54,9 +49,4 @@ export interface ArticleTagForm {
      * 排序
      */
     sort?: number;
-    
-    /**
-     * 标签状态(1-正常；0-停用)
-     */
-    status?: number;
 }

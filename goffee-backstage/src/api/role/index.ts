@@ -11,7 +11,7 @@ export function getRolePage(
   queryParams?: RoleQuery
 ): AxiosPromise<RolePageResult> {
   return request({
-    url: '/api/auth/roles/page',
+    url: '/api/backstage/sys/role/page',
     method: 'get',
     params: queryParams
   });
@@ -26,7 +26,7 @@ export function listRoleOptions(
   queryParams?: RoleQuery
 ): AxiosPromise<OptionType[]> {
   return request({
-    url: '/api/auth/roles/options',
+    url: '/api/backstage/sys/role/options',
     method: 'get',
     params: queryParams
   });
@@ -39,7 +39,7 @@ export function listRoleOptions(
  */
 export function getRoleMenuIds(roleId: number): AxiosPromise<number[]> {
   return request({
-    url: '/api/auth/roles/' + roleId + '/menuIds',
+    url: '/api/backstage/sys/role/' + roleId + '/menuIds',
     method: 'get'
   });
 }
@@ -54,7 +54,7 @@ export function updateRoleMenus(
   data: number[]
 ): AxiosPromise<any> {
   return request({
-    url: '/api/auth/roles/' + roleId + '/menus',
+    url: '/api/backstage/sys/role/' + roleId + '/menus',
     method: 'put',
     data: data
   });
@@ -67,7 +67,7 @@ export function updateRoleMenus(
  */
 export function getRoleForm(id: number): AxiosPromise<RoleForm> {
   return request({
-    url: '/api/auth/roles/' + id + '/form',
+    url: '/api/backstage/sys/role/' + id + '/form',
     method: 'get'
   });
 }
@@ -79,7 +79,7 @@ export function getRoleForm(id: number): AxiosPromise<RoleForm> {
  */
 export function addRole(data: RoleForm) {
   return request({
-    url: '/api/auth/roles',
+    url: '/api/backstage/sys/role/save',
     method: 'post',
     data: data
   });
@@ -93,8 +93,8 @@ export function addRole(data: RoleForm) {
  */
 export function updateRole(id: number, data: RoleForm) {
   return request({
-    url: '/api/auth/roles/' + id,
-    method: 'put',
+    url: '/api/backstage/sys/role/update/' + id,
+    method: 'post',
     data: data
   });
 }
@@ -106,7 +106,7 @@ export function updateRole(id: number, data: RoleForm) {
  */
 export function deleteRoles(ids: string) {
   return request({
-    url: '/api/auth/roles/' + ids,
-    method: 'delete'
+    url: '/api/backstage/sys/role/remove/' + ids,
+    method: 'get'
   });
 }

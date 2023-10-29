@@ -6,13 +6,6 @@
           <el-input v-model="articleTagPageQParams.keywords" placeholder="标签名称" clearable @keyup.enter="getArticleTagPage" />
         </el-form-item>
 
-        <el-form-item label="状态" prop="status">
-          <el-select v-model="articleTagPageQParams.status" placeholder="全部" clearable style="width: 200px">
-            <el-option label="启用" value="1" />
-            <el-option label="禁用" value="0" />
-          </el-select>
-        </el-form-item>
-
         <el-form-item>
           <el-button type="primary" @click="getArticleTagPage"><i-ep-search />搜索</el-button>
           <el-button @click="resetQuery"><i-ep-refresh />重置</el-button>
@@ -30,13 +23,6 @@
         highlight-current-row border>
         <el-table-column type="selection" width="55" align="center" />
         <el-table-column label="标签名称" prop="tagName" min-width="100" />
-        <el-table-column label="状态" align="center" width="100">
-          <template #default="scope">
-            <el-tag v-if="scope.row.status === 1" type="success">正常</el-tag>
-            <el-tag v-else type="info">禁用</el-tag>
-          </template>
-        </el-table-column>
-
         <el-table-column label="排序" align="center" width="80" prop="sort" />
         <el-table-column label="创建时间" align="center" prop="gmtCreate" />
         <el-table-column label="修改时间" align="center" prop="gmtModified" />
@@ -64,13 +50,6 @@
           <el-input v-model="formData.tagName" placeholder="请输入标签名称" />
         </el-form-item>
 
-        <el-form-item label="状态" prop="status">
-          <el-radio-group v-model="formData.status">
-            <el-radio :label="1">正常</el-radio>
-            <el-radio :label="0">停用</el-radio>
-          </el-radio-group>
-        </el-form-item>
-
         <el-form-item label="排序" prop="sort">
           <el-input-number v-model="formData.sort" controls-position="right" :min="0" style="width: 100px" />
         </el-form-item>
@@ -90,8 +69,8 @@
 import { ElForm } from 'element-plus';
 import { useBlogStore } from '@/store/blog';
 import { storeToRefs } from 'pinia';
-import { getArticleTagForm,addArticleTag,deleteArticleTags,updateArticleTag} from '@/api/articleTags'
-import { ArticleTagForm } from '@/api/articleTags/types';
+import { getArticleTagForm,addArticleTag,deleteArticleTags,updateArticleTag} from '@/api/blog/articleTags'
+import { ArticleTagForm } from '@/api/blog/articleTags/types';
 
 const blogStore = useBlogStore()
 const { loading, articleTagPageInfo, articleTagPageQParams } = storeToRefs(blogStore)
@@ -130,7 +109,6 @@ function handleSelectionChange(selection: any) {
  */
  const formData = reactive<ArticleTagForm>({
   sort: 1,
-  status: 1,
 });
 const rules = reactive({
   tagName: [{ required: true, message: '请输入标签名称', trigger: 'blur' }],
@@ -195,7 +173,6 @@ function resetForm() {
 
   formData.id = undefined;
   formData.sort = 1;
-  formData.status = 1;
 }
 
 /**

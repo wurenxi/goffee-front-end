@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { updateUserAvatar } from '@/api/user'
 import { uploadImage } from '@/api/file'
-import { useUserInfoStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { storeToRefs } from 'pinia'
 import defaultAvatar from '@/assets/img/steinsgate/defaultAvatar.jpg'
 import {
@@ -47,8 +47,8 @@ withDefaults(
   }
 )
 
-const userInfoStore = useUserInfoStore()
-const { userInfo } = storeToRefs(userInfoStore)
+const userStore = useUserStore()
+const { userInfo } = storeToRefs(userStore)
 
 /* 上传之前检查 */
 const beforeUpload: UploadProps['beforeUpload'] = (file: UploadRawFile) => {
@@ -72,7 +72,7 @@ const uploadAvatar = async (options: UploadRequestOptions) => {
   if (result) {
     result = await updateUserAvatar({ id: userInfo.value.userId, avatar: result.data.url })
     if (result) {
-      userInfoStore.getInfo()
+      userStore.getInfo()
       ElMessage.success('修改头像成功')
     }
   } else {

@@ -88,8 +88,8 @@
 
 <script setup lang='ts'>
 import { useBlogStore } from '@/store/blog';
-import { getSectionForm,addSection,deleteSections,updateSection} from '@/api/articleSection'
-import { ArticleSectionForm } from '@/api/articleSection/types';
+import { getSectionForm,addSection,deleteSections,updateSection} from '@/api/blog/articleSection'
+import { ArticleSectionForm } from '@/api/blog/articleSection/types';
 import { storeToRefs } from 'pinia';
 import { ElForm, ElMessage } from 'element-plus';
 

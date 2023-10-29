@@ -24,13 +24,13 @@
 </template>
 
 <script setup lang="ts">
-import { useUserInfoStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user'
 import { getUserArticlePage, deleteArticleLogical } from '@/api/blog'
 import { storeToRefs } from 'pinia'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
-const userInfoStore = useUserInfoStore()
-const { userInfo } = storeToRefs(userInfoStore)
+const userStore = useUserStore()
+const { userInfo } = storeToRefs(userStore)
 
 /* 删除文章（逻辑删除） */
 const deleteArticle = async (articleId: string, title: string) => {

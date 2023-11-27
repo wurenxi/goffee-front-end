@@ -7,6 +7,10 @@
         备案/许可证编号：<a href="https://beian.miit.gov.cn" target="_blank">苏ICP备2023015258号</a>
       </p>
     </aside>
+    <div class="middle">
+      <img src="@/assets/img/beian/备案图标.png" alt="">
+      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32120202010512" rel="noreferrer" target="_blank">苏公网安备32120202010512</a>
+    </div>
     <div class="right">
       <p>Copyright © 2023-present goffee.cn</p>
       <div class="my">
@@ -57,6 +61,9 @@ import QrcodeVue from 'qrcode.vue'
     background-color: var(--footer-bg);
     .font-normal();
 
+    a {
+        color: rgb(207, 0, 112);
+    }
     .one {
       font-size: 2rem;
     }
@@ -67,9 +74,12 @@ import QrcodeVue from 'qrcode.vue'
 
     .three {
       font-size: 0.8rem;
+    }
 
-      a {
-        color: rgb(207, 0, 112);
+    .middle {
+      .flex-multi(row, flex-start, center);
+      img {
+        width: 16px;
       }
     }
 

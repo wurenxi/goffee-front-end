@@ -1,30 +1,3 @@
-<template>
-  <div class="editor-container">
-    <div class="switch-btn">
-      <p class="text" @click="changeEditorName">
-        切换到{{ editorName === 'tinymce' ? 'markdown' : '富文本' }}编辑器
-      </p>
-    </div>
-    <div v-show="editorName === 'tinymce'" style="height: 500px">
-      <Editor
-        :init="editorInit"
-        v-model="contentRich"
-        tinymce-script-src="/tinymce/tinymce.min.js"
-      />
-    </div>
-    <div v-show="editorName !== 'tinymce'" id="markdown">
-      <MdEditor
-        v-model="text"
-        :theme="editorTheme === 'dark' ? 'dark' : 'light'"
-        @onUploadImg="onUploadImg"
-        @onHtmlChanged="saveHtml"
-        preview-theme="github"
-        @onSave="editorStore.useSave()"
-      />
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import Editor from '@tinymce/tinymce-vue'
 import MdEditor from 'md-editor-v3'
@@ -100,12 +73,19 @@ const editorInit = {
     'wordcount',
     'codesample',
     'save',
-    'importcss'
+    'importcss',
+    'textpattern'
   ],
   toolbar:
     'undo redo | formatselect | bold italic backcolor blockquote | \
            alignleft aligncenter alignright alignjustify | \
            bullist numlist outdent indent | removeformat | codesample code | help',
+  /* 排版 */
+  text_patterns: [
+    {start: '---', replacement: '<hr/>'},
+    {start: '>', format: 'blockquote'},
+    {start: '`', end: '`', format: 'code'}
+  ],
   codesample_global_prismjs: true,
   codesample_languages: tinymceCodeLanguageList.value,
   images_upload_handler: async (blobInfo: { blob: () => string | Blob }) => {
@@ -192,6 +172,33 @@ export default {
   name: 'CustomEditor'
 }
 </script>
+
+<template>
+  <div class="editor-container">
+    <div class="switch-btn">
+      <p class="text" @click="changeEditorName">
+        切换到{{ editorName === 'tinymce' ? 'markdown' : '富文本' }}编辑器
+      </p>
+    </div>
+    <div v-show="editorName === 'tinymce'" style="height: 500px">
+      <Editor
+        :init="editorInit"
+        v-model="contentRich"
+        tinymce-script-src="/tinymce/tinymce.min.js"
+      />
+    </div>
+    <div v-show="editorName !== 'tinymce'" id="markdown">
+      <MdEditor
+        v-model="text"
+        :theme="editorTheme === 'dark' ? 'dark' : 'light'"
+        @onUploadImg="onUploadImg"
+        @onHtmlChanged="saveHtml"
+        preview-theme="github"
+        @onSave="editorStore.useSave()"
+      />
+    </div>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .editor-container {

@@ -114,12 +114,15 @@ export const useBlogStore = defineStore('blog', () => {
     }
     articlesLoading.value = true
     searchLoading.value = true
-    const result = await getArticlePage(queryArticlePageParam.value)
-    if (result) {
-      Object.assign(articlePageInfo.value!, result.data)
+    try {
+      const result = await getArticlePage(queryArticlePageParam.value)
+      if (result) {
+        Object.assign(articlePageInfo.value!, result.data)
+      }
+    } finally {
+      articlesLoading.value = false
+      searchLoading.value = false
     }
-    articlesLoading.value = false
-    searchLoading.value = false
   }
   // 重置查询条件
   const resetArticlePageQueryParam = () => {

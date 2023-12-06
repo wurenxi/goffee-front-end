@@ -83,8 +83,10 @@ const editorInit = {
   /* 排版 */
   text_patterns: [
     {start: '---', replacement: '<hr/>'},
-    {start: '>', format: 'blockquote'},
-    {start: '`', end: '`', format: 'code'}
+    {start: '> ', format: 'blockquote'},
+    {start: '`', end: '`', format: 'code'},
+    {start: '1. ', cmd: 'InsertOrderedList'},
+    {start: '- ', cmd: 'InsertUnorderedList'},
   ],
   codesample_global_prismjs: true,
   codesample_languages: tinymceCodeLanguageList.value,

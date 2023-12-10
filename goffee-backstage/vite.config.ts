@@ -45,7 +45,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
       // 反向代理解决跨域
       proxy: {
         [env.VITE_APP_BASE_API]: {
-          target: 'http://localhost:10001',
+          target: 'http://localhost:15801',
           changeOrigin: true,
           rewrite: path =>
             // localhost:3000/dev-api/users/me → http://vapi.youlai.tech/users/me

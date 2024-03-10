@@ -1,10 +1,19 @@
+<script setup lang="ts">
+import { Calendar } from '@element-plus/icons-vue'
+import defaultAvatar from '@/assets/img/steinsgate/defaultAvatar.jpg'
+
+const props = defineProps<{
+  article: ArticleItemInfoVO
+}>()
+</script>
+
 <template>
   <div class="article-author-info">
     <!-- 文章标题 -->
     <div class="article-title">
       <h2>{{ article.title }}</h2>
       <time
-        ><el-icon> <Calendar /> </el-icon>&nbsp;发表于{{ article.gmtCreate }}</time
+      ><el-icon> <Calendar /> </el-icon>&nbsp;发表于{{ article.gmtCreate }}</time
       >
     </div>
     <!-- 作者 -->
@@ -22,26 +31,8 @@
         <p class="introduction">{{ article.authorVO.introduction }}</p>
       </div>
     </div>
-    <!-- icon group 文章观看次数等信息 -->
-    <ul class="icongroup">
-      <li>
-        <svg class="eye" width="30" height="30">
-          <use xlink:href="#icon-yanjing"></use>
-        </svg>
-        <span>{{ article.viewCounts }}</span>
-      </li>
-    </ul>
   </div>
 </template>
-
-<script setup lang="ts">
-import { Calendar } from '@element-plus/icons-vue'
-import defaultAvatar from '@/assets/img/steinsgate/defaultAvatar.jpg'
-
-const props = defineProps<{
-  article: ArticleItemInfoVO
-}>()
-</script>
 
 <style lang="less" scoped>
 .article-author-info {
@@ -93,20 +84,6 @@ const props = defineProps<{
         font-size: 1.3rem;
         color: #a0a0a0;
       }
-    }
-  }
-
-  .icongroup {
-    display: flex;
-    margin: 1rem 0;
-
-    li {
-      display: flex;
-      align-items: center;
-    }
-
-    .eye {
-      fill: var(--common-font-color);
     }
   }
 }

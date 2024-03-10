@@ -8,7 +8,7 @@
           <ArticleBody ref="articleBody" :html="articleInfo.content.html" />
         </div>
         <el-divider />
-        <!-- 结束部分，显示查看数 -->
+        <!-- 结束部分 -->
         <BottomItem :article="articleInfo" />
       </div>
     </article>

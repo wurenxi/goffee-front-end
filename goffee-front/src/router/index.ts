@@ -47,17 +47,17 @@ router.beforeEach(async (to, from, next) => {
     }
   } else {
     if (to.meta.requireAuth) {
-      ElMessageBox.confirm('该页面需要登录才可访问，请问是否跳转到登录页？', '登录提示', {
+      await ElMessageBox.confirm('该页面需要登录才可访问，请问是否跳转到登录页？', '登录提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       })
         .then(() => {
           NProgress.start()
-          next({ path: `/login`, query: { redirect: to.path } })
+          next({ path: '/login', query: { redirect: to.path } })
         })
         .catch(() => {
-          return
+          NProgress.done()
         })
     } else {
       next()

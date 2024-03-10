@@ -1,6 +1,6 @@
 <template>
   <div class="article-wrapper" ref="wrapper">
-    <div class="item article-item" v-for="(article, index) in articlePageInfo.list">
+    <div class="item article-item" :key="index" v-for="(article, index) in articlePageInfo.list">
       <div
         class="cover"
         :data-text="LabmenName[index]"
@@ -25,18 +25,8 @@
             </el-icon>
             <span class="date" v-text="article.gmtModified"></span>
           </div>
-          <div class="item">
-            <svg class="yanjing" width="25" height="25">
-              <use xlink:href="#icon-yanjing"></use>
-            </svg>
-            <div class="count" v-text="article.viewCounts"></div>
-          </div>
         </div>
-        <router-link
-          :to="`/article/${article.id}`"
-          class="title"
-          v-text="article.title"
-        ></router-link>
+        <router-link :to="`/article/${article.id}`" class="title">{{ article.title }}</router-link>
         <div class="text" v-text="article.content.replace(/<[^<>]+>/g, '')"></div>
         <div class="meta footer">
           <div class="item">
@@ -90,7 +80,11 @@ const banner = ref([
 ])
 
 const blogStore = useBlogStore()
-const { articlePageInfo, queryArticlePageParam } = storeToRefs(blogStore)
+const { articlePageInfo } = storeToRefs(blogStore)
+
+onUpdated(() => {
+  articleShow()
+})
 
 const wrapper = ref<HTMLDivElement>() as Ref<HTMLDivElement>
 const articleShow = () => {
@@ -111,9 +105,6 @@ const articleShow = () => {
     })
   })
 }
-onUpdated(() => {
-  articleShow()
-})
 </script>
 
 <style lang="less" scoped>
@@ -126,8 +117,8 @@ onUpdated(() => {
   & > .item {
     display: flex;
     position: relative;
-    width: calc(100% - 2rem);
-    min-width: calc(100% - 2rem);
+    width: calc(100% - 1rem);
+    min-width: calc(100% - 1rem);
     height: 31rem;
     margin: 1rem;
     border-radius: 1rem;
@@ -136,6 +127,7 @@ onUpdated(() => {
     transition: all 0.2s ease-in-out 0s;
     color: var(--text-color);
     opacity: 0;
+    overflow: hidden;
 
     &:nth-child(even) {
       flex-direction: row-reverse;
@@ -293,10 +285,19 @@ onUpdated(() => {
   }
 }
 
+@media screen and (max-width: @fourk-device) and (min-width: 2000px) {
+  .article-wrapper {
+
+    & > .item {
+      height: 48rem;
+    }
+  }
+}
+
 @media screen and (max-width: 1200px) {
   .article-item {
     flex-direction: column !important;
-    height: 35rem !important;
+    height: 35rem;
     max-height: fit-content;
     width: 100% !important;
     min-width: 100% !important;

@@ -89,10 +89,6 @@
         >
           默认
         </div>
-        <!-- todo -->
-        <!-- <div class="alltag">
-          最多阅读
-        </div> -->
         <div
           class="alltag"
           :class="{ active: queryArticlePageParam.orderByGmtModified }"
@@ -129,9 +125,12 @@
         <p>版块</p>
       </div>
       <el-select
+        class="articleSectionSelect"
         v-model="queryArticlePageParam.articleSectionId"
         placeholder="选择版块"
         clearable
+        filterable
+        style="width: 230px;"
         @change="
           () => {
             queryArticlePageParam.pageNum = 1

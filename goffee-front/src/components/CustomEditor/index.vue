@@ -212,7 +212,7 @@ export default {
     .font-normal();
 
     .text {
-      display: flexbox;
+      display: -ms-flexbox;
       padding: 10px 15px 5px 15px;
       .cursor-pointer();
       .flexbox();

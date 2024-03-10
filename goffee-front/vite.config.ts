@@ -126,7 +126,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         "element-plus/es/components/timeline-item/style/css",
         "element-plus/es/components/timeline/style/css",
         "element-plus/es/components/upload/style/css",
-        "element-plus/lib/locale/lang/zh-cn",
+        "element-plus/dist/locale/zh-cn.mjs",
         "gsap",
         "gsap/CustomEase",
         "prismjs",

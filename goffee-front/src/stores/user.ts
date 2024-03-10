@@ -47,14 +47,14 @@ export const useUserStore = defineStore('user', () => {
     if (result) {
       const { data } = result
       if (!data) {
-        Promise.reject('Verification failed, please Login again.')
+        await Promise.reject('Verification failed, please Login again.')
       }
       if (!data.roles || data.roles.length <= 0) {
-        Promise.reject('getUserInfo: roles must be a non-null array!')
+        await Promise.reject('getUserInfo: roles must be a non-null array!')
       }
       Object.assign(userInfo.value, data)
     } else {
-      Promise.reject('获取用户信息fail')
+      await Promise.reject('获取用户信息fail')
     }
   }
 

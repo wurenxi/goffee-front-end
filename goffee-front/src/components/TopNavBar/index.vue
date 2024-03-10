@@ -77,7 +77,7 @@ const closePollup = () => {
 
 /* 打字机效果 */
 const typedOptions: TypedOptions = {
-  strings: ['El Psy Congroo'],
+  strings: ['El Psy Kongroo'],
   loop: true,
   typeSpeed: 250,
   backSpeed: 100,
@@ -214,8 +214,6 @@ const throttle = function (func?: Function, wait?: any, options?: any) {
   width: 100%;
   height: 100%;
   background: url('@/assets/img/steinsgate/bg-all.jpg') center center / cover no-repeat local;
-  background-position: center center;
-  background-repeat: no-repeat;
   animation: to_show 4s, breathe 15s linear infinite alternate;
 }
 

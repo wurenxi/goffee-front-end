@@ -30,7 +30,7 @@ declare global {
       markdownEditor: boolean
     }
     articleTagIds: Array<number>
-    articleSectionId: number
+    articleSectionId?: number
     imgCollection?: Array<string>
   }
 

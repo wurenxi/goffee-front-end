@@ -40,10 +40,6 @@
             "
             >{{ articleItem.articleSection.sectionName }}</el-tag
           >
-          <svg class="yanjing" width="30" height="30">
-            <use xlink:href="#icon-yanjing"></use>
-          </svg>
-          <span>{{ articleItem.viewCounts ? articleItem.viewCounts : 0 }}</span>
         </div>
       </section>
     </article>
@@ -128,11 +124,6 @@ defineProps<{
             background-color: @themeColor2;
             border-color: @themeColor2;
             color: #fff;
-          }
-
-          .yanjing {
-            margin: 5px;
-            fill: var(--common-font-color);
           }
         }
       }

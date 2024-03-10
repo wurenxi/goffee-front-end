@@ -1,50 +1,3 @@
-<template>
-  <div class="edit">
-    <div class="top">
-      <div class="title-box">
-        <span>标题：</span>
-        <input class="title" type="text" v-model="addArticle.title" />
-      </div>
-      <div class="summary">
-        <el-input
-          v-model="addArticle.summary"
-          placeholder="请输入摘要"
-          maxlength="100"
-          show-word-limit
-          autosize
-          type="textarea"
-        />
-      </div>
-      <CustomEditor />
-      <div class="buttom">
-        <div class="tags">
-          <TagChoose
-            class="tag"
-            :chooseOptions="canChooseTags"
-            :choosedTag="tags"
-            :canAdd="true"
-            @addTag="addTagFn"
-          />
-          <div class="pannel">
-            <p class="label">版块选择</p>
-            <el-select v-model="addArticle.articleSectionId" placeholder="选择板块">
-              <el-option
-                v-for="articleSection in articleSections"
-                :key="articleSection.id"
-                :label="articleSection.sectionName"
-                :value="articleSection.id"
-              />
-            </el-select>
-          </div>
-        </div>
-        <div class="publish">
-          <el-button round type="primary" size="large" @click="submitArticle"> 发表 </el-button>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import CustomEditor from '@/components/CustomEditor/index.vue'
 import TagChoose from '@/components/TagChoose/index.vue'
@@ -58,6 +11,7 @@ import { ElMessage } from 'element-plus'
 import { useEditorStore } from '@/stores/file'
 import { removeItem } from '@/utils/storage'
 import router from '@/router'
+import type { Ref } from 'vue'
 
 const blogStore = useBlogStore()
 const userStore = useUserStore()
@@ -79,9 +33,9 @@ const addArticle = ref<ArticleRequestVO>({
     markdownEditor: false
   },
   articleTagIds: [],
-  articleSectionId: 1,
+  articleSectionId: undefined,
   imgCollection: []
-})
+}) as Required<Ref<ArticleRequestVO>>
 const submitArticle = async () => {
   if (!userInfo.value.userId) {
     ElMessage.error('您当前未登录，请登录后重试')
@@ -142,6 +96,59 @@ export default {
   name: 'EditPage'
 }
 </script>
+
+<template>
+  <div class="edit">
+    <div class="top">
+      <div class="title-box">
+        <span>标题：</span>
+        <input class="title" type="text" v-model="addArticle.title" />
+      </div>
+      <div class="summary">
+        <el-input
+          v-model="addArticle.summary"
+          placeholder="请输入摘要"
+          maxlength="100"
+          show-word-limit
+          autosize
+          type="textarea"
+        />
+      </div>
+      <CustomEditor />
+      <div class="buttom">
+        <div class="tags">
+          <TagChoose
+            class="tag"
+            :chooseOptions="canChooseTags"
+            :choosedTag="tags"
+            :canAdd="true"
+            @addTag="addTagFn"
+          />
+          <div class="pannel">
+            <p class="label">版块选择</p>
+            <el-select
+              v-model="addArticle.articleSectionId"
+              placeholder="选择板块"
+              style="width: 230px"
+              clearable
+              filterable
+            >
+              <el-option
+                v-for="articleSection in articleSections"
+                :key="articleSection.id"
+                :label="articleSection.sectionName"
+                :value="articleSection.id"
+              />
+            </el-select>
+          </div>
+        </div>
+        <div class="publish">
+          <el-button round type="primary" size="large" @click="submitArticle"> 发表 </el-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style lang="less" scoped>
 @media screen and (min-width: @mobile-device) {

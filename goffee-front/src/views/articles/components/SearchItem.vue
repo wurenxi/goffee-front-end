@@ -9,7 +9,7 @@
       style="width: 100%; margin-right: 1rem"
       :fetch-suggestions="querySearchAsync"
       @select="handleSelect"
-      @keyup.enter.native="blogStore.getArticles"
+      @keyup.enter="blogStore.getArticles"
       :debounce="1000"
       :loading="loading"
       popper-class="searchTips"

@@ -110,7 +110,7 @@ onMounted(() => {
   .main {
     margin: 0 auto;
     width: 80%;
-    min-height: 712px;
+    min-height: calc(100vh - 194px);
   }
 }
 

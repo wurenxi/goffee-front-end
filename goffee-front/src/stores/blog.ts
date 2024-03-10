@@ -35,7 +35,7 @@ export const useBlogStore = defineStore('blog', () => {
   }
 
   /* 获取版块列表 */
-  const articleSections = ref<Array<ArticleSection>>([])
+  const articleSections = ref<ArticleSection[]>([])
   const getArticleSectionList = async () => {
     const result = await getAllArticleSections()
     if (result) {

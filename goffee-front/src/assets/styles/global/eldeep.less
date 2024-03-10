@@ -44,6 +44,37 @@
   }
 }
 
+/* 下拉框 */
+:deep(.el-select__wrapper) {
+  outline: 0.2rem solid var(--border-color);
+  border-radius: 1rem;
+  font-weight: 600;
+  background-color: var(--common-bg);
+  font-size: 1.3rem;
+}
+
+:deep(.el-select__selection) {
+  color: var(--common-font-color);
+  font-size: 1rem;
+  .cursor-text();
+
+  &::-webkit-input-placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &:-moz-placeholder {
+    color: var(--placeholder-color);
+  }
+
+  &::-moz-placeholder {
+    color: var(--placeholder-color);
+  }
+}
+
+:deep(.el-select__selected-item) {
+  color: var(--common-font-color);
+}
+
 :deep(.el-card) {
   border: 0.2rem solid var(--border-color);
   border-radius: 1rem;

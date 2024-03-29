@@ -15,11 +15,12 @@ jobs:
         node-version: [ 20.10.0 ]
     # 步骤
     steps:
+      - name: 迁出代码
+        uses: actions/checkout@v3
       - name: 查看当前工作目录
         run: pwd
       - name: 查看当前工作目录下文件
         run: ls -l
-      - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -56,11 +57,12 @@ jobs:
         node-version: [ 20.10.0 ]
     # 步骤
     steps:
+      - name: 迁出代码
+        uses: actions/checkout@v3
       - name: 查看当前工作目录
         run: pwd
       - name: 查看当前工作目录下文件
         run: ls -l
-      - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3

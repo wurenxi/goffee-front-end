@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: 查看当前工作目录
         run: pwd
+      - name: 查看当前工作目录下文件
+        run: ls -l
       - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
@@ -56,6 +58,8 @@ jobs:
     steps:
       - name: 查看当前工作目录
         run: pwd
+      - name: 查看当前工作目录下文件
+        run: ls -l
       - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}

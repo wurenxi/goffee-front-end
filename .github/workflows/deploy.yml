@@ -21,6 +21,8 @@ jobs:
         run: ls -l
       - name: 设置工作目录
         run: cd goffee-front
+      - name: 查看当前工作目录文件
+        run: ls -l
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -63,6 +65,8 @@ jobs:
         run: ls -l
       - name: 设置工作目录
         run: cd goffee-backstage
+      - name: 查看当前工作目录文件
+        run: ls -l
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3

@@ -12,7 +12,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./goffee-front
+        working-directory: /goffee-front
     # 运行环境
     runs-on: ubuntu-latest
     strategy:
@@ -54,7 +54,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory: ./goffee-backstage
+        working-directory: /goffee-backstage
     # 运行环境
     runs-on: ubuntu-latest
     strategy:

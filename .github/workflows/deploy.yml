@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+        working-directory: ./goffee-front
       # 安装依赖
       - name: 安装依赖
         run: npm cache clean -f && npm install -f
@@ -61,6 +62,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+        working-directory: ./goffee-backstage
       # 安装依赖
       - name: 安装依赖
         working-directory: ./goffee-backstage

@@ -15,8 +15,8 @@ jobs:
         node-version: [ 20.10.0 ]
     # 步骤
     steps:
-      - name: 前往工作目录
-        run: cd ./goffee-front
+      - name: 查看当前工作目录
+        run: pwd
       - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
@@ -54,8 +54,8 @@ jobs:
         node-version: [ 20.10.0 ]
     # 步骤
     steps:
-      - name: 前往工作目录
-        run: cd ./goffee-backstage
+      - name: 查看当前工作目录
+        run: pwd
       - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}

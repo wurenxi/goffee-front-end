@@ -10,15 +10,13 @@ jobs:
   build-front:
     # 运行环境
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./goffee-front
     strategy:
       matrix:
         node-version: [ 20.10.0 ]
     # 步骤
     steps:
+      - name: 前往工作目录
+        run: cd ./goffee-front
       - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
@@ -51,15 +49,13 @@ jobs:
   build-backstage:
     # 运行环境
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./goffee-backstage
     strategy:
       matrix:
         node-version: [ 20.10.0 ]
     # 步骤
     steps:
+      - name: 前往工作目录
+        run: cd ./goffee-backstage
       - uses: actions/checkout@v3
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}

@@ -12,6 +12,7 @@
       "@/*": ["./src/*"]
     },
     "types": ["element-plus/global"],
+    "ignoreDeprecations": "5.0",
   },
 
   "references": [

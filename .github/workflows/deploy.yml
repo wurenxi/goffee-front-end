@@ -19,22 +19,21 @@ jobs:
         uses: actions/checkout@v3
       - name: 查看当前工作目录文件
         run: ls -l
-      - name: 设置工作目录
-        run: cd goffee-front
-      - name: 查看当前工作目录文件
-        run: ls -l
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+        working-directory: ./goffee-front
       # 安装依赖
       - name: 安装依赖
         run: npm cache clean -f && npm install -f
+        working-directory: ./goffee-front
       # 打包
       - name: 打包
         run: npm run build --if-present
+        working-directory: ./goffee-front
       # 上传至阿里服务器
       - name: 部署
         uses: easingthemes/ssh-deploy@v5.0.3
@@ -48,7 +47,7 @@ jobs:
           # 用户名
           REMOTE_USER: ${{ secrets.USER }}
           # 源目录
-          SOURCE: 'dist'
+          SOURCE: 'goffee-front/dist'
           # 目标目录
           TARGET: ${{ secrets.USER_FRONT_PATH }}
   build-backstage:
@@ -63,22 +62,21 @@ jobs:
         uses: actions/checkout@v3
       - name: 查看当前工作目录文件
         run: ls -l
-      - name: 设置工作目录
-        run: cd goffee-backstage
-      - name: 查看当前工作目录文件
-        run: ls -l
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+        working-directory: ./goffee-backstage
       # 安装依赖
       - name: 安装依赖
         run: npm cache clean -f && npm install -f
+        working-directory: ./goffee-backstage
       # 打包
       - name: 打包
         run: npm run build --if-present
+        working-directory: ./goffee-backstage
       # 上传至阿里服务器
       - name: 部署
         uses: easingthemes/ssh-deploy@v5.0.3
@@ -92,6 +90,6 @@ jobs:
           # 用户名
           REMOTE_USER: ${{ secrets.USER }}
           # 源目录
-          SOURCE: 'dist'
+          SOURCE: 'goffee-backstage/dist'
           # 目标目录
           TARGET: ${{ secrets.USER_BACKSTAGE_PATH }}

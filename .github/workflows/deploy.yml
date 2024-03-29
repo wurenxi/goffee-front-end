@@ -17,10 +17,10 @@ jobs:
     steps:
       - name: 迁出代码
         uses: actions/checkout@v3
-      - name: 查看当前工作目录
-        run: pwd
-      - name: 查看当前工作目录下文件
+      - name: 查看当前工作目录文件
         run: ls -l
+      - name: 设置工作目录
+        run: cd goffe-front
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -59,10 +59,10 @@ jobs:
     steps:
       - name: 迁出代码
         uses: actions/checkout@v3
-      - name: 查看当前工作目录
-        run: pwd
-      - name: 查看当前工作目录下文件
+      - name: 查看当前工作目录文件
         run: ls -l
+      - name: 设置工作目录
+        run: cd goffe-backstage
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3

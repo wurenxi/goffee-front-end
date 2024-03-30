@@ -90,9 +90,9 @@ const editorInit = {
   ],
   codesample_global_prismjs: true,
   codesample_languages: tinymceCodeLanguageList.value,
-  setup: (editor) => {
-    editor.on('keydown', e => {
-      if(e.keyCode === 9) {
+  setup: (editor: typeof Editor) => {
+    editor.on('keydown', (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
         if(e.shiftKey) {
           editor.execCommand('Outdent')
         }else {

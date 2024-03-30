@@ -47,11 +47,12 @@ const getHighLightLanguage = async () => {
 
 // tinymce编辑器
 const editorInit = {
-  language_url: '/tinymce/langs/zh-Hans.js', // pro
-  // language_url: '/public/tinymce/langs/zh-Hans.js', // dev
-  language: 'zh-Hans',
+  language_url: '/tinymce/langs/zh_CN.js', // pro
+  language: 'zh_CN',
+  theme: 'silver',
   skin_url: '/tinymce/skins/ui/tinymce-5-dark',
   content_css: '/tinymce/skins/content/tinymce-5-dark/content.min.css',
+  branding: false,
   height: 500,
   plugins: [
     'advlist',
@@ -74,7 +75,6 @@ const editorInit = {
     'codesample',
     'save',
     'importcss',
-    'textpattern'
   ],
   toolbar:
     'undo redo | formatselect | bold italic backcolor blockquote | \
@@ -90,6 +90,19 @@ const editorInit = {
   ],
   codesample_global_prismjs: true,
   codesample_languages: tinymceCodeLanguageList.value,
+  setup: (editor) => {
+    editor.on('keydown', e => {
+      if(e.keyCode === 9) {
+        if(e.shiftKey) {
+          editor.execCommand('Outdent')
+        }else {
+          editor.execCommand('Indent')
+        }
+        e.preventDefault()
+        e.stopPropagation()
+      }
+    })
+  },
   images_upload_handler: async (blobInfo: { blob: () => string | Blob }) => {
     const needUploadImage: UploadFileType = {
       file: blobInfo.blob(),
@@ -182,7 +195,7 @@ export default {
         切换到{{ editorName === 'tinymce' ? 'markdown' : '富文本' }}编辑器
       </p>
     </div>
-    <div v-show="editorName === 'tinymce'" style="height: 500px">
+    <div v-show="editorName === 'tinymce'">
       <Editor
         :init="editorInit"
         v-model="contentRich"

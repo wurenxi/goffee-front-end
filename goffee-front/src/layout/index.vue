@@ -6,6 +6,7 @@
     <div class="main" ref="mainClass">
       <router-view v-slot="{ Component }">
         <transition
+          mode="out-in"
             enter-active-class="animate__animated animate__fadeIn"
             leave-active-class="animate__animated animate__fadeOut"
         >
@@ -15,7 +16,7 @@
         </transition>
       </router-view>
     </div>
-    <FooterItem/>
+    <FooterItem />
     <div ref="rainBox" id="rainBox"></div>
     <el-backtop :right="20" :bottom="50"/>
   </div>
@@ -39,7 +40,7 @@ const pages = cachePages.cachePages
 // 监视页面，并动态设置页面缓存
 const route = useRoute()
 watch(route, (to) => {
-  if (to.meta.KeepAlive) {
+  if (to.meta.keepAlive) {
     if (to.name) {
       cachePages.setCachePage(to.name.toString())
     }
@@ -98,7 +99,6 @@ onMounted(() => {
   // 不阻挡其他元素事件触发
   pointer-events: none;
   z-index: 9999;
-  pointer-events: none;
 }
 
 .container {

@@ -31,10 +31,10 @@
     "qiniu": "^7.11.0",
     "qiniu-js": "^3.4.2",
     "qrcode.vue": "^3.4.0",
-    "tinymce": "^6.7.3",
-    "vue": "^3.2.47",
+    "tinymce": "^6.8.3",
+    "vue": "^3.4.21",
     "vue-lazyload": "^3.0.0",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
@@ -43,23 +43,23 @@
     "@types/prismjs": "^1.26.0",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.1.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/eslint-config-typescript": "^11.0.3",
     "@vue/tsconfig": "^0.1.3",
     "autoprefixer": "^10.4.14",
-    "eslint": "^8.34.0",
-    "eslint-plugin-vue": "^9.9.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^9.24.0",
     "less": "^4.1.3",
     "less-loader": "^11.1.0",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.31",
     "prettier": "^2.8.4",
     "tailwindcss": "^3.2.7",
-    "typescript": "^5.3.2",
+    "typescript": "^5.4.3",
     "unplugin-auto-import": "^0.15.1",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.1.5",
+    "vite": "^4.5.3",
     "vite-plugin-prismjs": "^0.0.8",
-    "vue-tsc": "^1.2.0",
+    "vue-tsc": "^1.8.27",
     "vue-typed-js": "^0.1.2"
   }
 }

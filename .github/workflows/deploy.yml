@@ -45,7 +45,7 @@ jobs:
           # 用户名
           REMOTE_USER: ${{ secrets.USER }}
           # 源目录
-          SOURCE: 'goffee-front/dist'
+          SOURCE: 'goffee-front/dist/*'
           # 目标目录
           TARGET: ${{ secrets.USER_FRONT_PATH }}
   build-backstage:
@@ -86,6 +86,6 @@ jobs:
           # 用户名
           REMOTE_USER: ${{ secrets.USER }}
           # 源目录
-          SOURCE: 'goffee-backstage/dist'
+          SOURCE: 'goffee-backstage/dist/*'
           # 目标目录
           TARGET: ${{ secrets.USER_BACKSTAGE_PATH }}

@@ -39,13 +39,13 @@ request.interceptors.response.use(
     ElMessage.error(msg || '系统出错')
     return Promise.reject(new Error(msg || 'Error'))
   },
-  (error: any) => {
+  async (error: any) => {
     if (error.response.data) {
       const { code, msg } = error.response.data
       // token 过期，重新登录
       if (code === 'A0230') {
         localStorage.clear()
-        ElMessageBox.confirm('当前页面已失效，请重新登录', '提示', {
+        await ElMessageBox.confirm('当前页面已失效，请重新登录', '提示', {
           confirmButtonText: '确定',
           type: 'warning',
           showCancelButton: false

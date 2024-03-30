@@ -4,14 +4,13 @@ import { createPinia } from 'pinia'
 import piniaPluginPersist from 'pinia-plugin-persist'
 import APP from './App.vue'
 import router from './router'
+// tailwind 样式
+import '@/assets/styles/tailwind/preflight.css'
+import '@/assets/styles/tailwind/index.css'
 // element-plus css
 import 'element-plus/dist/index.css'
-// tailwind
-import '@/assets/styles/tailwind/index.css'
-import '@/assets/styles/tailwind/preflight.css'
 // iconfont
 import '@/assets/fonts/iconfont.js'
-// import '//at.alicdn.com/t/c/font_3950020_kkxv3vlp1yk.js'
 // mitt
 import mitt from 'mitt'
 // dark-mode

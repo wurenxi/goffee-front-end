@@ -1,23 +1,23 @@
 <template>
   <div class="container">
     <!-- 头部 -->
-    <TopNavBar :mainClass="mainClass" />
+    <TopNavBar :mainClass="mainClass"/>
     <!-- 主体 -->
     <div class="main" ref="mainClass">
-      <transition
-        enter-active-class="animate__animated animate__fadeIn"
-        leave-active-class="animate__animated animate__fadeOut"
-      >
-        <router-view v-slot="{ Component }">
+      <router-view v-slot="{ Component }">
+        <transition
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+        >
           <KeepAlive :include="pages">
             <component :is="Component"></component>
           </KeepAlive>
-        </router-view>
-      </transition>
+        </transition>
+      </router-view>
     </div>
-    <FooterItem />
+    <FooterItem/>
     <div ref="rainBox" id="rainBox"></div>
-    <el-backtop :right="20" :bottom="50" />
+    <el-backtop :right="20" :bottom="50"/>
   </div>
 </template>
 
@@ -27,11 +27,11 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { useCacheStore } from '@/stores/cache'
-import { useUserStore } from '@/stores/user'
-import { storeToRefs } from 'pinia'
+import {useCacheStore} from '@/stores/cache'
+import {useUserStore} from '@/stores/user'
+import {storeToRefs} from 'pinia'
 
-const { token } = storeToRefs(useUserStore())
+const {token} = storeToRefs(useUserStore())
 
 const mainClass = ref<HTMLDivElement>()
 const cachePages = useCacheStore()

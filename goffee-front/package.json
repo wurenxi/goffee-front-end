@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite",
     "build": "run-p type-check build-only",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -20,7 +20,7 @@
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
     "axios": "^1.6.0",
-    "element-plus": "^2.6.0",
+    "element-plus": "^2.6.3",
     "gsap": "^3.11.5",
     "md-editor-v3": "^2.11.0",
     "mitt": "^3.0.0",

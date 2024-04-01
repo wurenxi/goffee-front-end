@@ -181,6 +181,13 @@ onBeforeMount(() => {
     }
   }
 })
+
+const switchBtn = ref<HTMLElement>()
+onBeforeUnmount(() => {
+  if (editorName.value === 'tinymce') {
+    switchBtn.value!.style.display = 'none'
+  }
+})
 </script>
 <script lang="ts">
 export default {
@@ -190,12 +197,12 @@ export default {
 
 <template>
   <div class="editor-container">
-    <div class="switch-btn">
+    <div ref="switchBtn" class="switch-btn">
       <p class="text" @click="changeEditorName">
         切换到{{ editorName === 'tinymce' ? 'markdown' : '富文本' }}编辑器
       </p>
     </div>
-    <div v-show="editorName === 'tinymce'">
+    <div class="myTinymce" v-show="editorName === 'tinymce'">
       <Editor
         :init="editorInit"
         v-model="contentRich"
@@ -216,6 +223,13 @@ export default {
 </template>
 
 <style lang="less" scoped>
+.myTinymce {
+  height: 500px;
+
+  & > textarea {
+    display: none !important;
+  }
+}
 .editor-container {
   display: flex;
   flex-direction: column;

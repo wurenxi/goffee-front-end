@@ -35,12 +35,12 @@ const getHighLightLanguage = async () => {
   const result = await queryTinymceCodeLanguage()
   if (result) {
     result.data.forEach((item) => {
-      let tinymceCodeLanguag: TinymceCodeLanguage = {
+      let tinymceCodeLanguage: TinymceCodeLanguage = {
         text: '',
         value: ''
       }
-      Object.assign(tinymceCodeLanguag, item)
-      tinymceCodeLanguageList.value.push(tinymceCodeLanguag)
+      Object.assign(tinymceCodeLanguage, item)
+      tinymceCodeLanguageList.value.push(tinymceCodeLanguage)
     })
   }
 }

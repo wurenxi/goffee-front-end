@@ -26,7 +26,7 @@ export const getArticleTagPage = (params: ArticleTagPageParam) =>
 /* 添加文章标签 */
 export const addArticleTag = (data: ArticleTags) =>
   request({
-    url: '/api/tag/save',
+    url: '/api/backstage/blog/tag/save',
     method: 'post',
     data
   })

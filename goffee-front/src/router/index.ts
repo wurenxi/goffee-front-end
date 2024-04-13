@@ -13,9 +13,6 @@ const router = createRouter({
   routes,
   // 每次切换路由页面滚动到顶部
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition
-    }
     if (to.path === from.path) {
       return false
     }

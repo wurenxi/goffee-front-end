@@ -49,7 +49,7 @@ const props = defineProps<{
       font-size: 1.3rem;
       margin: 5px 0;
       display: flex;
-      align-items: center;
+      justify-content: center;
     }
   }
 

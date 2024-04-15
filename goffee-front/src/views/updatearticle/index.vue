@@ -1,57 +1,3 @@
-<template>
-  <div>
-    <MyPageHeader class="header"> 编辑文章 {{ articleInfo.title }} </MyPageHeader>
-    <div class="edit">
-      <el-alert
-        :title="`本文使用了${
-          articleInfo.content.richEditor ? '富文本' : 'Markdown'
-        }编辑器进行编写，请注意编辑器的选择`"
-        type="warning"
-        effect="dark"
-      ></el-alert>
-      <input class="title" v-model="articleInfo.title" />
-      <div class="summary">
-        <el-input
-          v-model="articleInfo.summary"
-          autosize
-          show-word-limit
-          maxlength="100"
-          type="textarea"
-          placeholder="请输入摘要 不多于100字"
-        />
-      </div>
-      <!-- 双重切换编辑器 -->
-      <CustomEditor :defaultEditor="editorName" />
-      <div class="bottom">
-        <div class="tag">
-          <TagChoose
-            :choosedTag="tags"
-            :chooseOptions="canChooseTags"
-            :canAdd="true"
-            @addTag="addTagFn"
-          />
-          <div class="pannel">
-            <p class="label">板块选择</p>
-            <el-select v-model="articleInfo.articleSectionId" placeholder="选择板块">
-              <el-option
-                v-for="item in articleSections"
-                :key="item.id"
-                :label="item.sectionName"
-                :value="item.id"
-              />
-            </el-select>
-          </div>
-        </div>
-        <div class="publish">
-          <el-button type="primary" round size="large" class="submit-btn" @click="submitChange"
-            >修改</el-button
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useChangeHeaderStyle } from '@/hooks/useChangeHeaderStyle'
 import { getArticleItemInfo, updateArticle } from '@/api/blog'
@@ -170,6 +116,61 @@ onMounted(async () => {
 useChangeHeaderStyle()
 </script>
 
+<template>
+  <div>
+    <MyPageHeader class="header"> 编辑文章 {{ articleInfo.title }}</MyPageHeader>
+    <div class="edit">
+      <el-alert
+        :title="`本文使用了${
+          articleInfo.content.richEditor ? '富文本' : 'Markdown'
+        }编辑器进行编写，请注意编辑器的选择`"
+        type="warning"
+        effect="dark"
+      ></el-alert>
+      <input class="title" v-model="articleInfo.title" />
+      <div class="summary">
+        <el-input
+          v-model="articleInfo.summary"
+          autosize
+          show-word-limit
+          maxlength="100"
+          type="textarea"
+          placeholder="请输入摘要 不多于100字"
+        />
+      </div>
+      <!-- 双重切换编辑器 -->
+      <CustomEditor :defaultEditor="editorName" />
+      <div class="bottom">
+        <div class="tag">
+          <TagChoose
+            :choosedTag="tags"
+            :chooseOptions="canChooseTags"
+            :canAdd="true"
+            @addTag="addTagFn"
+          />
+          <div class="pannel">
+            <p class="label">板块选择</p>
+            <el-select v-model="articleInfo.articleSectionId" placeholder="选择板块">
+              <el-option
+                v-for="item in articleSections"
+                :key="item.id"
+                :label="item.sectionName"
+                :value="item.id"
+              />
+            </el-select>
+          </div>
+        </div>
+        <div class="publish">
+          <el-button type="primary" round size="large" class="submit-btn" @click="submitChange"
+          >修改
+          </el-button
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <style lang="less" scoped>
 @media screen and (min-width: @mobile-device) {
   .edit {
@@ -206,15 +207,21 @@ useChangeHeaderStyle()
 
       .tag {
         width: 100%;
+        margin: 1rem 0;
         .flex-multi(column, center, flex-start);
       }
 
       .pannel {
+        width: 100%;
         display: flex;
         align-items: center;
 
         .label {
           width: 100px;
+        }
+
+        .el-select {
+          width: 230px;
         }
       }
 

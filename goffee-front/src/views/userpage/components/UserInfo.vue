@@ -12,7 +12,7 @@
         <svg class="female icon" v-else-if="userInfo.gender === 2">
           <use xlink:href="#icon-nvsheng"></use>
         </svg>
-        <svg class="unknown icon" v-else="!userInfo.gender">
+        <svg class="unknown icon" v-else>
           <use xlink:href="#icon-xingbie"></use>
         </svg>
       </div>

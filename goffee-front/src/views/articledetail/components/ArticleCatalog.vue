@@ -84,7 +84,7 @@ const getTitles = (container: HTMLElement) => {
 
 /* 目录滚轮配置 */
 const content = ref<HTMLElement | null>(null)
-let { y } = useScroll(content, { behavior: 'smooth' })
+const { y } = useScroll(content, { behavior: 'smooth' })
 
 /* 监听滚动事件并更新样式 */
 window.addEventListener('scroll', () => {

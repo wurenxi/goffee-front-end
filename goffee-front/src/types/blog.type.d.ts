@@ -74,7 +74,7 @@ declare global {
   interface ArticlePageReqVO {
     keyword?: string
     articleSectionId?: number
-    articleTagsId?: Array<number>
+    articleTagIds?: Array<number>
     gmtModified?: Date
     orderByGmtModified?: string
     orderByGmtCreate?: string

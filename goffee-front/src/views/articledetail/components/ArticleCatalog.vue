@@ -205,7 +205,7 @@ const scrollToView = (scrollTop: number) => {
   }
 
   .catalog-content {
-    max-height: calc(80vh);
+    max-height: 75vh;
     overflow: auto;
     margin-right: -24px;
     padding-right: 20px;

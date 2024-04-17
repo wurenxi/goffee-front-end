@@ -71,7 +71,7 @@ jobs:
         working-directory: ./goffee-backstage
       # 打包
       - name: 打包
-        run: npm run build --if-present
+        run: npm run build:prod --if-present
         working-directory: ./goffee-backstage
       # 上传至阿里服务器
       - name: 部署

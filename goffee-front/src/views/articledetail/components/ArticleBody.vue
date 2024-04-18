@@ -1,26 +1,3 @@
-<template>
-  <section>
-    <div
-      ref="markdownBody"
-      v-html="html"
-      v-highlight
-      class="markdown-body"
-      id="markdown-body"
-      @click="ImagePreview($event)"
-    ></div>
-    <template v-if="showPreview">
-      <ElImageViewer
-        v-if="showPreview"
-        :infinite="false"
-        :url-list="urlList"
-        :hide-on-click-modal="true"
-        :teleported="false"
-        @close="close"
-      />
-    </template>
-  </section>
-</template>
-
 <script setup lang="ts">
 import type { Directive } from 'vue'
 import { isMobile } from '@/utils/mobile'
@@ -52,6 +29,7 @@ const vHighlight: Directive = {
     const pres = el.querySelectorAll('pre')
     pres.forEach((pre) => {
       pre.classList.add('line-numbers')
+      // pre.style.whiteSpace = 'pre-wrap'
     })
     const codes: NodeListOf<HTMLPreElement> = el.querySelectorAll('pre code')
     codes.forEach((code) => {
@@ -86,6 +64,29 @@ const close = () => {
   isMobile() ? (document.documentElement.style.overflow = '') : (document.body.style.overflow = '')
 }
 </script>
+
+<template>
+  <section>
+    <div
+      ref="markdownBody"
+      v-html="html"
+      v-highlight
+      class="markdown-body"
+      id="markdown-body"
+      @click="ImagePreview($event)"
+    ></div>
+    <template v-if="showPreview">
+      <ElImageViewer
+        v-if="showPreview"
+        :infinite="false"
+        :url-list="urlList"
+        :hide-on-click-modal="true"
+        :teleported="false"
+        @close="close"
+      />
+    </template>
+  </section>
+</template>
 
 <style lang="less" scoped>
 .markdown-body {

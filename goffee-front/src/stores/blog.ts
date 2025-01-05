@@ -170,7 +170,6 @@ export const useBlogStore = defineStore('blog', () => {
     chooseTag.value = []
     queryArticlePageParam.value.articleTagIds = undefined
     queryArticlePageParam.value.pageNum = 1
-    getArticles()
   }
 
   return {

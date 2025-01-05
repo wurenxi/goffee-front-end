@@ -285,11 +285,19 @@ const articleShow = () => {
   }
 }
 
+@media screen and (max-width: @fourk-device) {
+}
+
 @media screen and (max-width: @fourk-device) and (min-width: 2000px) {
   .article-wrapper {
-
     & > .item {
       height: 48rem;
+
+      .info {
+        .text {
+          -webkit-line-clamp: 17;
+        }
+      }
     }
   }
 }

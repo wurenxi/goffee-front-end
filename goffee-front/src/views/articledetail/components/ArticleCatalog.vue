@@ -6,7 +6,9 @@ import { useScroll } from '@vueuse/core'
 const { container, titles, currentTitle, progress } = storeToRefs(useBlogStore())
 
 watch(container, (newVal) => {
-  getTitles(newVal!)
+  if (newVal) {
+    getTitles(newVal)
+  }
 })
 
 /* 获取目录的标题 */

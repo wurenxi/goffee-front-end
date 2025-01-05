@@ -48,8 +48,7 @@ const props = defineProps<{
     time {
       font-size: 1.3rem;
       margin: 5px 0;
-      display: flex;
-      justify-content: center;
+      .flex-multi(row, center, center)
     }
   }
 
@@ -82,7 +81,7 @@ const props = defineProps<{
 
       .introduction {
         font-size: 1.3rem;
-        color: #a0a0a0;
+        color: var(--intruction-color);
       }
     }
   }

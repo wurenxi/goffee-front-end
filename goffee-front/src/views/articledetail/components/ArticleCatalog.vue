@@ -1,38 +1,7 @@
-<template>
-  <div v-if="Object.keys(titles).length > 0" class="catalog affix-container" id="catalog">
-    <el-affix target=".affix-container" :offset="80" :z-index="1">
-      <div class="catalog-card">
-        <div class="catalog-card-header">
-          <div>
-            <span
-              ><font-awesome-icon :icon="['fas', 'bars-staggered']" class="catalog-icon"
-            /></span>
-            <span>目录</span>
-          </div>
-          <span class="progress">{{ progress }}</span>
-        </div>
-
-        <div class="catalog-content">
-          <div
-            v-for="title in titles"
-            :key="title.id"
-            @click="scrollToView(title.scrollTop)"
-            :class="['catalog-item', currentTitle.id == title.id ? 'active' : 'not-active']"
-            :style="{ marginLeft: title.level * 20 + 'px' }"
-            v-show="title.isVisible"
-            :title="title.rawName"
-          >
-            {{ title.name }}
-          </div>
-        </div>
-      </div>
-    </el-affix>
-  </div>
-</template>
-
 <script lang="ts" setup>
 import { useBlogStore } from '@/stores/blog'
 import { storeToRefs } from 'pinia'
+import { useScroll } from '@vueuse/core'
 
 const { container, titles, currentTitle, progress } = storeToRefs(useBlogStore())
 
@@ -42,7 +11,7 @@ watch(container, (newVal) => {
   }
 })
 
-// 获取目录的标题
+/* 获取目录的标题 */
 const getTitles = (container: HTMLElement) => {
   titles.value = []
   let levels = ['h1', 'h2', 'h3']
@@ -83,6 +52,7 @@ const getTitles = (container: HTMLElement) => {
         node.isVisible = false
         lastNode.children?.push(node)
       }
+
       // 遇到上一级标题
       else if (lastNode.level > node.level) {
         serialNumbers.fill(0, level + 1)
@@ -97,6 +67,7 @@ const getTitles = (container: HTMLElement) => {
           parent = parent.parent
         }
       }
+
       // 遇到平级
       else if (lastNode.parent) {
         node.parent = lastNode.parent
@@ -113,7 +84,11 @@ const getTitles = (container: HTMLElement) => {
   }
 }
 
-// 监听滚动事件并更新样式
+/* 目录滚轮配置 */
+const content = ref<HTMLElement | null>(null)
+const { y } = useScroll(content, { behavior: 'smooth' })
+
+/* 监听滚动事件并更新样式 */
 window.addEventListener('scroll', () => {
   progress.value = Math.floor((window.scrollY / document.documentElement.scrollHeight) * 100) + '%'
 
@@ -122,7 +97,11 @@ window.addEventListener('scroll', () => {
   for (let i = titles.value.length - 1; i >= 0; i--) {
     const title = titles.value[i]
     if (title.scrollTop <= window.scrollY) {
-      if (currentTitle.value.id === title.id) return
+      if (currentTitle.value.id === title.id) {
+        // 目录滚轮自动追踪高亮文章标题
+        y.value = currentTitle.value.scrollTop
+        return
+      }
 
       Object.assign(currentTitle.value, title)
 
@@ -150,7 +129,7 @@ window.addEventListener('scroll', () => {
   }
 })
 
-// 设置子节点的可见性
+/* 设置子节点的可见性 */
 const setChildrenVisible = (title: Title, isVisible: boolean) => {
   if (title.children) {
     for (const child of title.children) {
@@ -164,6 +143,36 @@ const scrollToView = (scrollTop: number) => {
   window.scrollTo({ top: scrollTop, behavior: 'smooth' })
 }
 </script>
+
+<template>
+  <div v-if="Object.keys(titles).length > 0" class="catalog affix-container" id="catalog">
+    <el-affix target=".affix-container" :offset="80" :z-index="1">
+      <div class="catalog-card">
+        <div class="catalog-card-header">
+          <div>
+            <span><font-awesome-icon :icon="['fas', 'bars-staggered']" class="catalog-icon" /></span>
+            <span>目录</span>
+          </div>
+          <span class="progress">{{ progress }}</span>
+        </div>
+
+        <div class="catalog-content" ref="content">
+          <div
+            v-for="title in titles"
+            :key="title.id"
+            @click="scrollToView(title.scrollTop)"
+            :class="['catalog-item', currentTitle.id == title.id ? 'active' : 'not-active']"
+            :style="{ marginLeft: title.level * 20 + 'px' }"
+            v-show="title.isVisible"
+            :title="title.rawName"
+          >
+            {{ title.name }}
+          </div>
+        </div>
+      </div>
+    </el-affix>
+  </div>
+</template>
 
 <style lang="less" scoped>
 @media screen and (min-width: @mobile-device) {
@@ -207,7 +216,7 @@ const scrollToView = (scrollTop: number) => {
   }
 
   .catalog-content {
-    max-height: calc(80vh);
+    max-height: 75vh;
     overflow: auto;
     margin-right: -24px;
     padding-right: 20px;

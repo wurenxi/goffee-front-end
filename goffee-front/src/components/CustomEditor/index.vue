@@ -75,6 +75,7 @@ const editorInit = {
     'codesample',
     'save',
     'importcss',
+    'text_patterns'
   ],
   toolbar:
     'undo redo | formatselect | bold italic backcolor blockquote | \
@@ -82,11 +83,20 @@ const editorInit = {
            bullist numlist outdent indent | removeformat | codesample code | help',
   /* 排版 */
   text_patterns: [
-    {start: '---', replacement: '<hr/>'},
-    {start: '> ', format: 'blockquote'},
-    {start: '`', end: '`', format: 'code'},
-    {start: '1. ', cmd: 'InsertOrderedList'},
-    {start: '- ', cmd: 'InsertUnorderedList'},
+    { start: '*', end: '*', format: 'italic' },
+    { start: '**', end: '**', format: 'bold' },
+    { start: '`', end: '`', format: 'code' },
+    { start: '#', format: 'h1' },
+    { start: '##', format: 'h2' },
+    { start: '###', format: 'h3' },
+    { start: '####', format: 'h4' },
+    { start: '#####', format: 'h5' },
+    { start: '######', format: 'h6' },
+    { start: '---', replacement: '<hr/>' },
+    { start: '(c)', replacement: '©' },
+    { start: '>', cmd: 'mceBlockQuote', trigger: 'space' },
+    { start: '-', cmd: 'InsertUnorderedList', trigger: 'space' },
+    { start: '1.', cmd: 'InsertOrderedList', trigger: 'space' }
   ],
   codesample_global_prismjs: true,
   codesample_languages: tinymceCodeLanguageList.value,

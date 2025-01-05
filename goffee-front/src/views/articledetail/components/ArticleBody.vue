@@ -43,8 +43,31 @@ withDefaults(
 
 const markdownBody = ref<HTMLElement>()
 onMounted(() => {
-  container.value = markdownBody.value as HTMLElement
+  loadContent()
 })
+
+/* 加载文件且赋值给被监听属性 */
+const loadContent = () => {
+  // 图片加载为异步的，需等待所有图片加载完成再做赋值，否则锚点错位
+  const images = markdownBody.value!.querySelectorAll('img')
+  const totalImages = images.length
+  let loadedImages = 0
+  if (totalImages === 0) {
+    container.value = markdownBody.value as HTMLElement
+    return
+  }
+  images.forEach((image) => {
+    image.onload = () => {
+      loadedImages++
+      if (loadedImages === totalImages) {
+        container.value = markdownBody.value as HTMLElement
+      }
+    }
+    if (image.complete) {
+      image.onload(new Event('loaded'))
+    }
+  })
+}
 
 /* 高亮 */
 const vHighlight: Directive = {

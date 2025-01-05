@@ -148,7 +148,7 @@ export const useBlogStore = defineStore('blog', () => {
     if (!currentTagIds.value.includes(tag.id!)) {
       currentTagIds.value.push(tag.id!)
       chooseTag.value.push(tag)
-      queryArticlePageParam.value.articleTagsId = currentTagIds.value
+      queryArticlePageParam.value.articleTagIds = currentTagIds.value
       queryArticlePageParam.value.pageNum = 1
       getArticles()
     }
@@ -159,7 +159,7 @@ export const useBlogStore = defineStore('blog', () => {
       chooseTag.value = chooseTag.value.filter((item) => {
         return item.id !== tag.id
       })
-      queryArticlePageParam.value.articleTagsId = currentTagIds.value
+      queryArticlePageParam.value.articleTagIds = currentTagIds.value
       getArticles()
     }
   }
@@ -168,9 +168,8 @@ export const useBlogStore = defineStore('blog', () => {
   const resetChooseTags = () => {
     currentTagIds.value = []
     chooseTag.value = []
-    queryArticlePageParam.value.articleTagsId = undefined
+    queryArticlePageParam.value.articleTagIds = undefined
     queryArticlePageParam.value.pageNum = 1
-    getArticles()
   }
 
   return {

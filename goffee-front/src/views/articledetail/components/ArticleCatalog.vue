@@ -36,8 +36,10 @@ import { storeToRefs } from 'pinia'
 
 const { container, titles, currentTitle, progress } = storeToRefs(useBlogStore())
 
-watch(container, (newVal, oldVal) => {
-  getTitles(newVal!)
+watch(container, (newVal) => {
+  if (newVal) {
+    getTitles(newVal)
+  }
 })
 
 // 获取目录的标题

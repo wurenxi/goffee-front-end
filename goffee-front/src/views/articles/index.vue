@@ -68,7 +68,7 @@ useChangeHeaderStyle()
 </script>
 <script lang="ts">
 export default {
-  name: 'Aricles'
+  name: 'Articles'
 }
 </script>
 

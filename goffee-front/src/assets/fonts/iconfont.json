@@ -6,18 +6,39 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "3901533",
-      "name": "日落",
-      "font_class": "rila",
-      "unicode": "e60f",
-      "unicode_decimal": 58895
+      "icon_id": "38874373",
+      "name": "夜间模式",
+      "font_class": "yejianmoshi",
+      "unicode": "e7c3",
+      "unicode_decimal": 59331
     },
     {
-      "icon_id": "1240663",
-      "name": "太阳日出",
-      "font_class": "taiyangrichu",
-      "unicode": "e60b",
-      "unicode_decimal": 58891
+      "icon_id": "38874374",
+      "name": "日间模式",
+      "font_class": "rijianmoshi",
+      "unicode": "e7c4",
+      "unicode_decimal": 59332
+    },
+    {
+      "icon_id": "1264",
+      "name": "编辑",
+      "font_class": "bianji",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "11125633",
+      "name": "文章",
+      "font_class": "16",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "39633760",
+      "name": "主页",
+      "font_class": "zhuyemian",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
     },
     {
       "icon_id": "3741977",
@@ -104,13 +125,6 @@
       "unicode_decimal": 58904
     },
     {
-      "icon_id": "1567587",
-      "name": "pen_2",
-      "font_class": "pen",
-      "unicode": "e67b",
-      "unicode_decimal": 59003
-    },
-    {
       "icon_id": "2076384",
       "name": "表单控件 联系人",
       "font_class": "people",
@@ -130,13 +144,6 @@
       "font_class": "down",
       "unicode": "e839",
       "unicode_decimal": 59449
-    },
-    {
-      "icon_id": "27386199",
-      "name": "yanjing",
-      "font_class": "yanjing",
-      "unicode": "e60a",
-      "unicode_decimal": 58890
     },
     {
       "icon_id": "677569",

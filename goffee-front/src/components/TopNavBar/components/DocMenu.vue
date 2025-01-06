@@ -1,42 +1,39 @@
+<script setup lang="ts">
+</script>
+
 <template>
   <div class="docMenu navChild">
     <ul class="menuList">
       <li>
         <router-link class="menu-router" to="/home">
-          <el-icon>
-            <HomeFilled />
-          </el-icon>
+          <svg class="my-icon icon-zhuyemian" width="20" height="20">
+            <use xlink:href="#icon-zhuyemian" />
+          </svg>
+          &nbsp;
           <span>首页</span>
         </router-link>
       </li>
       <li>
         <router-link class="menu-router" to="/articles">
-          <el-icon>
-            <List />
-          </el-icon>
+          <svg class="my-icon icon-16" width="20" height="20">
+            <use xlink:href="#icon-16" />
+          </svg>
+          &nbsp;
           <span>文章</span>
         </router-link>
       </li>
       <li>
         <router-link class="menu-router" to="/edit">
-          <el-icon>
-            <EditPen />
-          </el-icon>
+          <svg class="my-icon icon-bianji" width="20" height="20">
+            <use xlink:href="#icon-bianji" />
+          </svg>
+          &nbsp;
           <span>发表文章</span>
         </router-link>
       </li>
     </ul>
   </div>
 </template>
-
-<script setup lang="ts">
-import { HomeFilled, List, EditPen } from '@element-plus/icons-vue'
-import { ElMessage } from 'element-plus'
-
-const handleCommand = (command: string | number | object) => {
-  ElMessage(`click on item ${command}`)
-}
-</script>
 
 <style lang="less" scoped>
 @media screen and (min-width: @mobile-device) {
@@ -58,6 +55,10 @@ const handleCommand = (command: string | number | object) => {
       .menu-router {
         display: flex;
         align-items: center;
+      }
+
+      span {
+        font-family: '幼圆', serif;
       }
 
       a {
@@ -85,10 +86,8 @@ const handleCommand = (command: string | number | object) => {
           transform: scaleX(1);
         }
 
-        span {
-          font-family: '幼圆';
-        }
-        .el-icon {
+        .my-icon {
+          fill: white;
           filter: drop-shadow(0 0.2rem 0.3rem rgb(0 0 0 / 0.5));
         }
       }

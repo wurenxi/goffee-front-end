@@ -1,18 +1,64 @@
+<script setup lang="ts">
+import { useEditorStore } from '@/stores/file'
+import { useColorMode } from '@vueuse/core'
+import defaultAvatar from '@/assets/img/steinsgate/defaultAvatar.jpg'
+import topbarBanner from '@/assets/img/steinsgate/topbar-banner.jpg'
+import { useUserStore } from '@/stores/user'
+import { storeToRefs } from 'pinia'
+import { ElMessageBox } from 'element-plus'
+
+const { editorTheme } = storeToRefs(useEditorStore())
+const { userInfo } = storeToRefs(useUserStore())
+// 默认头像
+const avatar = ref<string>(defaultAvatar)
+// 默认banner
+const banner = ref<string>(topbarBanner)
+const infoShow = ref(false)
+
+/* 退出登录 */
+const logout = () => {
+  ElMessageBox.confirm('确认退出登录吗？', '提示', {
+    confirmButtonText: '确认',
+    cancelButtonText: '取消',
+    type: 'warning'
+  }).then(() => {
+    useUserStore().logout(userInfo.value.userId)
+  })
+}
+
+const colorMode = useColorMode({
+  modes: {
+    light: 'light',
+    dark: 'dark'
+  },
+  attribute: 'theme'
+})
+const changeTheme = (theme: 'light' | 'dark') => {
+  colorMode.value = theme
+  // 修改md编辑器主题
+  if (theme === 'light') {
+    editorTheme.value = 'light'
+  } else {
+    editorTheme.value = 'dark'
+  }
+}
+</script>
+
 <template>
   <div class="tools navChild">
     <ul class="tool-group">
       <li v-if="colorMode == 'light'">
-        <svg class="iconfont sun" width="50" height="50" @click="changeTheme('dark')">
-          <use xlink:href="#icon-taiyangrichu"></use>
+        <svg class="iconfont sun" width="30" height="30" @click="changeTheme('dark')">
+          <use xlink:href="#icon-rijianmoshi"></use>
         </svg>
       </li>
       <li v-else>
-        <svg class="iconfont moon" width="50" height="50" @click="changeTheme('light')">
-          <use xlink:href="#icon-rila"></use>
+        <svg class="iconfont moon" width="30" height="30" @click="changeTheme('light')">
+          <use xlink:href="#icon-yejianmoshi"></use>
         </svg>
       </li>
       <li class="user-info" v-if="!userInfo.userId">
-        <router-link to="/login"> Login </router-link>
+        <router-link to="/login"> Login</router-link>
       </li>
       <li class="user-info" v-else>
         <div class="container" @mouseenter="infoShow = true" @mouseleave="infoShow = false">
@@ -66,52 +112,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { useEditorStore } from '@/stores/file'
-import { useColorMode } from '@vueuse/core'
-import defaultAvatar from '@/assets/img/steinsgate/defaultAvatar.jpg'
-import topbarBanner from '@/assets/img/steinsgate/topbar-banner.jpg'
-import { useUserStore } from '@/stores/user'
-import { storeToRefs } from 'pinia'
-import { ElMessageBox } from 'element-plus'
-
-const { editorTheme } = storeToRefs(useEditorStore())
-const { userInfo } = storeToRefs(useUserStore())
-// 默认头像
-const avatar = ref<string>(defaultAvatar)
-// 默认banner
-const banner = ref<string>(topbarBanner)
-const infoShow = ref(false)
-
-/* 退出登录 */
-const logout = () => {
-  ElMessageBox.confirm('确认退出登录吗？', '提示', {
-    confirmButtonText: '确认',
-    cancelButtonText: '取消',
-    type: 'warning'
-  }).then(() => {
-    useUserStore().logout(userInfo.value.userId)
-  })
-}
-
-const colorMode = useColorMode({
-  modes: {
-    light: 'light',
-    dark: 'dark'
-  },
-  attribute: 'theme'
-})
-const changeTheme = (theme: 'light' | 'dark') => {
-  colorMode.value = theme
-  // 修改md编辑器主题
-  if (theme === 'light') {
-    editorTheme.value = 'light'
-  } else {
-    editorTheme.value = 'dark'
-  }
-}
-</script>
-
 <style lang="less" scoped>
 @import url('@/assets/styles/MyAnimate.less');
 
@@ -120,8 +120,10 @@ const changeTheme = (theme: 'light' | 'dark') => {
     display: flex;
     align-items: center;
 
-    .iconfont:hover {
-      transform: scale(0.95);
+    .iconfont {
+      &:hover {
+        transform: scale(0.95);
+      }
     }
 
     .user-info {

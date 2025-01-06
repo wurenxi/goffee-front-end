@@ -362,13 +362,17 @@ const throttle = function (func?: Function, wait?: any, options?: any) {
   }
 
   :deep(.menuList) {
-    .el-icon {
-      filter: drop-shadow(0 0.2rem 0.3rem var(--grey-9-a1));
-    }
     li {
-      a::after {
-        background-color: var(--common-font-color);
+      a {
+        .my-icon {
+          fill: var(--fix-navbar-text-color);
+          filter: drop-shadow(0 0.2rem 0.3rem var(--grey-9-a1));
+        }
       }
+
+      //a::after {
+      //  background-color: var(--common-font-color);
+      //}
     }
   }
 }
@@ -390,8 +394,8 @@ const throttle = function (func?: Function, wait?: any, options?: any) {
           background-color: var(--common-font-color);
         }
 
-        .el-icon {
-          color: var(--fix-navbar-text-color);
+        .my-icon {
+          fill: var(--fix-navbar-text-color);
           filter: drop-shadow(0 0.2rem 0.3rem var(--grey-9-a1));
         }
       }

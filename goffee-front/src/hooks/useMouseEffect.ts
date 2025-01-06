@@ -25,11 +25,11 @@ export const useMouseEffect = () => {
   we.style.cssText = 'position:fixed;top:0;left:0;pointer-events:none;z-index:9999999'
   document.body.appendChild(we)
   const Ce = we.getContext('2d') as CanvasRenderingContext2D
-  let xe = 30
+  const xe = 30
   let ke = 0
   let Le = 0
-  let Ee = 'click'
-  let Te = fireworks
+  const Ee = 'click'
+  const Te = fireworks
   const Me = () => {
     we.width = window.innerWidth * 2
     we.height = window.innerHeight * 2
@@ -46,16 +46,16 @@ export const useMouseEffect = () => {
       ((e as TouchEvent).touches && (e as TouchEvent).touches[0].clientY)
   }
   const Oe = (e: EventParam) => {
-    var t = (anime.random(0, 360) * Math.PI) / 180
-    var a = anime.random(50, 180)
-    var n = [-1, 1][anime.random(0, 1)] * a
+    const t = (anime.random(0, 360) * Math.PI) / 180
+    const a = anime.random(50, 180)
+    const n = [-1, 1][anime.random(0, 1)] * a
     return {
       x: e.x + n * Math.cos(t),
       y: e.y + n * Math.sin(t)
     }
   }
   const je = (e: number, t: number) => {
-    var a = {
+    const a = {
       x: 0,
       y: 0,
       color: '#fff',
@@ -107,14 +107,14 @@ export const useMouseEffect = () => {
     return a
   }
   const He = (e: any) => {
-    for (var t = 0; t < e.animatables.length; t++) {
+    for (let t = 0; t < e.animatables.length; t++) {
       e.animatables[t].target.draw()
     }
   }
   const Ae = (e: number, t: number) => {
-    var a = Ie(e, t)
-    var n = []
-    for (var i = 0; i < xe; i++) {
+    const a = Ie(e, t)
+    const n = []
+    for (let i = 0; i < xe; i++) {
       n.push(je(e, t))
     }
     anime

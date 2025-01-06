@@ -4,17 +4,22 @@
     "env.d.ts", 
     "src/**/*", 
     "src/**/*.vue",
-    "./**/*.d.ts",
+    "./**/*.d.ts"
   ],
   "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     },
     "types": ["element-plus/global"],
     "ignoreDeprecations": "5.0",
+    "verbatimModuleSyntax": true,
+    "importsNotUsedAsValues": "remove",
+    "preserveValueImports": false
   },
-
   "references": [
     {
       "path": "./tsconfig.node.json"

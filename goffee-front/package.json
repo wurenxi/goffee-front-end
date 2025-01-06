@@ -19,7 +19,7 @@
     "@vueuse/head": "^1.1.26",
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
-    "axios": "^1.6.0",
+    "axios": "^1.7.4",
     "element-plus": "^2.6.3",
     "gsap": "^3.11.5",
     "md-editor-v3": "^2.11.0",
@@ -54,12 +54,12 @@
     "postcss": "^8.4.31",
     "prettier": "^2.8.4",
     "tailwindcss": "^3.2.7",
-    "typescript": "^5.4.3",
+    "typescript": "^5.6.2",
     "unplugin-auto-import": "^0.15.1",
     "unplugin-vue-components": "^0.24.1",
-    "vite": "^4.5.3",
+    "vite": "^5.4.6",
     "vite-plugin-prismjs": "^0.0.8",
-    "vue-tsc": "^1.8.27",
+    "vue-tsc": "^2.0.29",
     "vue-typed-js": "^0.1.2"
   }
 }

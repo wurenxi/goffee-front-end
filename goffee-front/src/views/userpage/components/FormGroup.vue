@@ -124,26 +124,23 @@ const willChangedPwd = ref<UpdatePwdForm>({
 })
 const changePwd = (formEl: FormInstance | undefined) => {
   if (!formEl) {
-    return false
+    return
   }
   formEl.validate(async (valid) => {
     if (valid) {
       if (willChangedPwd.value.newPwd !== willChangedPwd.value.newPwdRepeat) {
         ElMessage.error('新密码与重复密码不一致')
-        return false
+        return
       }
       const { userId } = userInfo.value
       let result = await updateUserPwd(userId, willChangedPwd.value)
       if (result) {
         // 退出登录，清空用户信息
         pwdDialogVisible.value = false
-        useUserStore().logout(userInfo.value.userId, '修改密码成功')
-      } else {
-        return false
+        await useUserStore().logout(userInfo.value.userId, '修改密码成功')
       }
     } else {
       ElMessage.error('请校验表单')
-      return false
     }
   })
 }
@@ -164,11 +161,11 @@ const formSubmit = async (formEl: FormInstance | undefined) => {
   if (!formEl) {
     return false
   }
-  formEl.validate(async (vaild) => {
-    if (vaild) {
+  await formEl.validate(async (valid) => {
+    if (valid) {
       let result = await updateUserInfo(userFormInfo.value)
       if (result) {
-        useUserStore().getInfo()
+        await useUserStore().getInfo()
         isEdit.value = false
         ElMessage.success('修改资料成功')
       } else {
@@ -176,7 +173,6 @@ const formSubmit = async (formEl: FormInstance | undefined) => {
       }
     } else {
       ElMessage.error('请校验表单')
-      return false
     }
   })
 }

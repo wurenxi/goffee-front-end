@@ -67,7 +67,7 @@
             :isClick="false"
             @closeTag="removeTag(tag)"
           />
-          <svg class="icon-reset" width="30" height="30" @click="resetChooseTags">
+          <svg class="icon-reset" width="30" height="30" @click="clearChooseTags">
             <use xlink:href="#icon-reset"></use>
           </svg>
         </div>
@@ -130,7 +130,7 @@
         placeholder="选择版块"
         clearable
         filterable
-        style="width: 230px;"
+        style="width: 230px"
         @change="
           () => {
             queryArticlePageParam.pageNum = 1
@@ -170,9 +170,15 @@ const {
   chooseTag,
   tagLoading
 } = storeToRefs(blogStore)
-const { getTagOptions, changeTag, removeTag, resetChooseTags, getTagId } = blogStore
+const { getTagOptions, changeTag, removeTag, resetChooseTags, getTagId, getArticles } = blogStore
 
 const allTag = ref<HTMLDivElement>()
+
+/* 清空标签 */
+const clearChooseTags = async () => {
+  resetChooseTags()
+  await getArticles()
+}
 
 /* 修改排序规则 */
 const changeOrderRule = (rule: string) => {

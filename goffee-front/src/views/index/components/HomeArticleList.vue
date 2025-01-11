@@ -1,3 +1,57 @@
+<script setup lang="ts">
+import { useBlogStore } from '@/stores/blog'
+import { storeToRefs } from 'pinia'
+import { Calendar } from '@element-plus/icons-vue'
+import { LabmenName, LabmenSpeak } from '@/enum/labmen'
+import { useEventListener } from '@vueuse/core'
+import labmen001 from '@/assets/img/steinsgate/labmen001.jpg'
+import labmen002 from '@/assets/img/steinsgate/labmen002.jpg'
+import labmen003 from '@/assets/img/steinsgate/labmen003.jpg'
+import labmen004 from '@/assets/img/steinsgate/labmen004.jpg'
+import labmen005 from '@/assets/img/steinsgate/labmen005.jpg'
+import labmen006 from '@/assets/img/steinsgate/labmen006.jpg'
+import labmen007 from '@/assets/img/steinsgate/labmen007.jpg'
+import labmen008 from '@/assets/img/steinsgate/labmen008.jpg'
+
+const banner = ref([
+  `url(${labmen001}) center center / cover no-repeat local`,
+  `url(${labmen002}) center center / cover no-repeat local`,
+  `url(${labmen003}) center center / cover no-repeat local`,
+  `url(${labmen004}) center center / cover no-repeat local`,
+  `url(${labmen005}) center center / cover no-repeat local`,
+  `url(${labmen006}) center center / cover no-repeat local`,
+  `url(${labmen007}) center center / cover no-repeat local`,
+  `url(${labmen008}) center center / cover no-repeat local`
+])
+
+const blogStore = useBlogStore()
+const { articlePageInfo } = storeToRefs(blogStore)
+
+onUpdated(() => {
+  articleShow()
+})
+
+const wrapper = ref<HTMLDivElement>() as Ref<HTMLDivElement>
+const articleShow = () => {
+  const selectors = Array.from(
+    wrapper.value.getElementsByClassName('article-item')
+  ) as HTMLElement[]
+  useEventListener('scroll', () => {
+    // 如果都有了show，就return空
+    // 获取页面滚动的距离
+    let pos = window.scrollY
+    selectors.forEach((i) => {
+      // 获取当前卡片的高度
+      let top = i.offsetHeight + i.offsetTop
+      if (pos >= top - 300) {
+        i.classList.add('show')
+        i.getElementsByClassName('cover')[0].classList.add('lozaded')
+      }
+    })
+  })
+}
+</script>
+
 <template>
   <div class="article-wrapper" ref="wrapper">
     <div class="item article-item" :key="index" v-for="(article, index) in articlePageInfo.list">
@@ -52,60 +106,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { useBlogStore } from '@/stores/blog'
-import { storeToRefs } from 'pinia'
-import { Calendar } from '@element-plus/icons-vue'
-import { LabmenName, LabmenSpeak } from '@/enum/labmen'
-import { useEventListener } from '@vueuse/core'
-import labmen001 from '@/assets/img/steinsgate/labmen001.jpg'
-import labmen002 from '@/assets/img/steinsgate/labmen002.jpg'
-import labmen003 from '@/assets/img/steinsgate/labmen003.jpg'
-import labmen004 from '@/assets/img/steinsgate/labmen004.jpg'
-import labmen005 from '@/assets/img/steinsgate/labmen005.jpg'
-import labmen006 from '@/assets/img/steinsgate/labmen006.jpg'
-import labmen007 from '@/assets/img/steinsgate/labmen007.jpg'
-import labmen008 from '@/assets/img/steinsgate/labmen008.jpg'
-
-const banner = ref([
-  `url(${labmen001}) center center / cover no-repeat local`,
-  `url(${labmen002}) center center / cover no-repeat local`,
-  `url(${labmen003}) center center / cover no-repeat local`,
-  `url(${labmen004}) center center / cover no-repeat local`,
-  `url(${labmen005}) center center / cover no-repeat local`,
-  `url(${labmen006}) center center / cover no-repeat local`,
-  `url(${labmen007}) center center / cover no-repeat local`,
-  `url(${labmen008}) center center / cover no-repeat local`
-])
-
-const blogStore = useBlogStore()
-const { articlePageInfo } = storeToRefs(blogStore)
-
-onUpdated(() => {
-  articleShow()
-})
-
-const wrapper = ref<HTMLDivElement>() as Ref<HTMLDivElement>
-const articleShow = () => {
-  const selectors = Array.from(
-    wrapper.value.getElementsByClassName('article-item')
-  ) as HTMLElement[]
-  useEventListener('scroll', () => {
-    // 如果都有了show，就return空
-    // 获取页面滚动的距离
-    let pos = window.scrollY
-    selectors.forEach((i) => {
-      // 获取当前卡片的高度
-      let top = i.offsetHeight + i.offsetTop
-      if (pos >= top - 300) {
-        i.classList.add('show')
-        i.getElementsByClassName('cover')[0].classList.add('lozaded')
-      }
-    })
-  })
-}
-</script>
 
 <style lang="less" scoped>
 .article-wrapper {
@@ -305,8 +305,8 @@ const articleShow = () => {
 @media screen and (max-width: 1200px) {
   .article-item {
     flex-direction: column !important;
-    height: 35rem;
-    max-height: fit-content;
+    height: 35rem !important;
+    //max-height: fit-content;
     width: 100% !important;
     min-width: 100% !important;
     margin: 1rem 0.5rem !important;

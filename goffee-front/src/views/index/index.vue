@@ -1,30 +1,3 @@
-<template>
-  <div class="inner">
-    <main class="main">
-      <div class="wrap">
-        <div class="header">
-          <el-divider direction="horizontal" content-position="center"> 最近更新文章 </el-divider>
-          <CustomButton
-            class="more"
-            :x="8"
-            :y="3.3"
-            :mainTextSize="1.3"
-            @click="$router.push('/articles')"
-          >
-            更多
-          </CustomButton>
-        </div>
-        <HomeArticleList />
-      </div>
-      <ul class="rightbox" ref="rightUI">
-        <li>
-          <TagsAll />
-        </li>
-      </ul>
-    </main>
-  </div>
-</template>
-
 <script lang="ts">
 export default { name: 'Index' }
 </script>
@@ -53,6 +26,33 @@ onMounted(() => {
 /* 设置头部的样式 */
 useChangeHeaderStyle()
 </script>
+
+<template>
+  <div class="inner">
+    <main class="main">
+      <div class="wrap">
+        <div class="header">
+          <el-divider direction="horizontal" content-position="center"> 最近更新文章 </el-divider>
+          <CustomButton
+            class="more"
+            :x="8"
+            :y="3.3"
+            :mainTextSize="1.3"
+            @click="$router.push('/articles')"
+          >
+            更多
+          </CustomButton>
+        </div>
+        <HomeArticleList />
+      </div>
+      <ul class="rightbox" ref="rightUI">
+        <li>
+          <TagsAll />
+        </li>
+      </ul>
+    </main>
+  </div>
+</template>
 
 <style lang="less" scoped>
 @media screen and (min-width: @mobile-device) {

@@ -1,13 +1,20 @@
 <script lang="ts" setup>
 import { useBlogStore } from '@/stores/blog'
 import { storeToRefs } from 'pinia'
-import { useScroll } from '@vueuse/core'
+import { useScroll, useResizeObserver } from '@vueuse/core'
 
 const { container, titles, currentTitle, progress } = storeToRefs(useBlogStore())
 
 watch(container, (newVal) => {
   if (newVal) {
     getTitles(newVal)
+  }
+})
+
+/* 网页缩放，重新进行锚点 */
+useResizeObserver(container, () => {
+  if (container.value) {
+    getTitles(container.value)
   }
 })
 

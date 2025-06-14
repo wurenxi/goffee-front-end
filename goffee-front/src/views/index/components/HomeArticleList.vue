@@ -315,8 +315,8 @@ const replacePreTags = (content: string) => {
 @media screen and (max-width: 1200px) {
   .article-item {
     flex-direction: column !important;
-    height: 35rem;
-    max-height: fit-content;
+    height: 35rem !important;
+    //max-height: fit-content;
     width: 100% !important;
     min-width: 100% !important;
     margin: 1rem 0.5rem !important;

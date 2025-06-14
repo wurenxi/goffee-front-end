@@ -11,7 +11,7 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "lib": [
-      "es2018",
+      "ESNext",
       "dom"
     ],
     "baseUrl": ".",

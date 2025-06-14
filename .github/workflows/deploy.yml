@@ -48,44 +48,45 @@ jobs:
           SOURCE: 'goffee-front/dist/*'
           # 目标目录
           TARGET: ${{ secrets.USER_FRONT_PATH }}
-  build-backstage:
-    # 运行环境
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [ 20.10.0 ]
-    # 步骤
-    steps:
-      - name: 迁出代码
-        uses: actions/checkout@v3
-      - name: 查看当前工作目录文件
-        run: ls -l
-      # 安装 node.js
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-      # 安装依赖
-      - name: 安装依赖
-        run: npm cache clean -f && npm install -f
-        working-directory: ./goffee-backstage
-      # 打包
-      - name: 打包
-        run: npm run build --if-present
-        working-directory: ./goffee-backstage
-      # 上传至阿里服务器
-      - name: 部署
-        uses: easingthemes/ssh-deploy@v5.0.3
-        with:
-          # 私钥
-          SSH_PRIVATE_KEY: ${{ secrets.ALI_PRIVATE_KEY }}
-          # scp 参数
-          ARGS: '-avzr --delete'
-          # 服务器地址
-          REMOTE_HOST: ${{ secrets.USER_HOST }}
-          # 用户名
-          REMOTE_USER: ${{ secrets.USER }}
-          # 源目录
-          SOURCE: 'goffee-backstage/dist/*'
-          # 目标目录
-          TARGET: ${{ secrets.USER_BACKSTAGE_PATH }}
+          SCRIPT_BEFORE: ls
+#  build-backstage:
+#    # 运行环境
+#    runs-on: ubuntu-latest
+#    strategy:
+#      matrix:
+#        node-version: [ 20.10.0 ]
+#    # 步骤
+#    steps:
+#      - name: 迁出代码
+#        uses: actions/checkout@v3
+#      - name: 查看当前工作目录文件
+#        run: ls -l
+#      # 安装 node.js
+#      - name: Use Node.js ${{ matrix.node-version }}
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: ${{ matrix.node-version }}
+#      # 安装依赖
+#      - name: 安装依赖
+#        run: npm cache clean -f && npm install -f
+#        working-directory: ./goffee-backstage
+#      # 打包
+#      - name: 打包
+#        run: npm run build --if-present
+#        working-directory: ./goffee-backstage
+#      # 上传至阿里服务器
+#      - name: 部署
+#        uses: easingthemes/ssh-deploy@v5.0.3
+#        with:
+#          # 私钥
+#          SSH_PRIVATE_KEY: ${{ secrets.ALI_PRIVATE_KEY }}
+#          # scp 参数
+#          ARGS: '-avzr --delete'
+#          # 服务器地址
+#          REMOTE_HOST: ${{ secrets.USER_HOST }}
+#          # 用户名
+#          REMOTE_USER: ${{ secrets.USER }}
+#          # 源目录
+#          SOURCE: 'goffee-backstage/dist/*'
+#          # 目标目录
+#          TARGET: ${{ secrets.USER_BACKSTAGE_PATH }}

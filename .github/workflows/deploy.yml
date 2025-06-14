@@ -34,10 +34,7 @@ jobs:
         working-directory: ./goffee-front
       # 上传至阿里服务器
       - name: 部署
-        uses: easingthemes/ssh-deploy@v5.0.3
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keyscan ${{ secrets.USER_HOST }} >> ~/.ssh/known_hosts
+        uses: easingthemes/ssh-deploy@main
         with:
           # 私钥
           SSH_PRIVATE_KEY: ${{ secrets.ALI_PRIVATE_KEY }}

@@ -29,3 +29,7 @@ coverage
 
 package-lock.json
 pnpm-lock.yaml
+
+# Auto-generated TypeScript declaration files
+auto-imports.d.ts
+components.d.ts

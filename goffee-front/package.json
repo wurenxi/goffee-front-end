@@ -20,6 +20,7 @@
     "animate.css": "^4.1.1",
     "animejs": "^3.2.1",
     "axios": "^1.7.4",
+    "dompurify": "^3.2.6",
     "element-plus": "^2.6.3",
     "gsap": "^3.11.5",
     "md-editor-v3": "^2.11.0",
@@ -32,6 +33,7 @@
     "qiniu-js": "^3.4.2",
     "qrcode.vue": "^3.4.0",
     "tinymce": "^6.8.3",
+    "unist-util-map": "^4.0.0",
     "vue": "^3.4.21",
     "vue-lazyload": "^3.0.0",
     "vue-router": "^4.3.0"

@@ -1,64 +1,10 @@
-<template>
-  <div class="article-wrapper" ref="wrapper">
-    <div class="item article-item" :key="index" v-for="(article, index) in articlePageInfo.list">
-      <div
-        class="cover"
-        :data-text="LabmenName[index]"
-        :style="{
-          background: `${banner[index]}`
-        }"
-      ></div>
-      <div class="info">
-        <div class="meta" :data-text="LabmenSpeak[index]">
-          <div class="item">
-            <div class="tw-w-8 tw-h-8 tw-rounded-full tw-overflow-hidden tw-mr-2">
-              <CustomElImage
-                :img="article.authorVO.avatar ? article.authorVO.avatar : undefined"
-                :zip="1"
-              />
-            </div>
-            <div class="author" v-text="article.authorVO.nickname"></div>
-          </div>
-          <div class="item">
-            <el-icon>
-              <Calendar />
-            </el-icon>
-            <span class="date" v-text="article.gmtModified"></span>
-          </div>
-        </div>
-        <router-link :to="`/article/${article.id}`" class="title">{{ article.title }}</router-link>
-        <div class="text" v-text="article.content.replace(/<[^<>]+>/g, '')"></div>
-        <div class="meta footer">
-          <div class="item">
-            <el-tag
-              class="articleSection"
-              effect="dark"
-              @click.stop.prevent="
-                $router.push(`/articles?articleSectionId=${article.articleSection.id}`)
-              "
-              >{{ article.articleSection.sectionName }}</el-tag
-            >
-          </div>
-          <div class="item">
-            <TagItem
-              v-for="tag in article.articleTags"
-              :key="tag.id"
-              :tagName="tag.tagName"
-              :tagId="tag.id!"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { useBlogStore } from '@/stores/blog'
 import { storeToRefs } from 'pinia'
 import { Calendar } from '@element-plus/icons-vue'
 import { LabmenName, LabmenSpeak } from '@/enum/labmen'
 import { useEventListener } from '@vueuse/core'
+import DOMPurify from 'dompurify'
 import labmen001 from '@/assets/img/steinsgate/labmen001.jpg'
 import labmen002 from '@/assets/img/steinsgate/labmen002.jpg'
 import labmen003 from '@/assets/img/steinsgate/labmen003.jpg'
@@ -105,7 +51,71 @@ const articleShow = () => {
     })
   })
 }
+
+/* 替换代码块 */
+const replacePreTags = (content: string) => {
+  const replacement = '【此处代码区域】'
+  return content.replace(/<pre[\s\S]*?>[\s\S]*?<\/pre>/g, replacement)
+}
 </script>
+
+<template>
+  <div class="article-wrapper" ref="wrapper">
+    <div class="item article-item" :key="index" v-for="(article, index) in articlePageInfo.list">
+      <div
+        class="cover"
+        :data-text="LabmenName[index]"
+        :style="{
+          background: `${banner[index]}`
+        }"
+      ></div>
+      <div class="info">
+        <div class="meta" :data-text="LabmenSpeak[index]">
+          <div class="item">
+            <div class="tw-w-8 tw-h-8 tw-rounded-full tw-overflow-hidden tw-mr-2">
+              <CustomElImage
+                :img="article.authorVO.avatar ? article.authorVO.avatar : undefined"
+                :zip="1"
+              />
+            </div>
+            <div class="author" v-text="article.authorVO.nickname"></div>
+          </div>
+          <div class="item">
+            <el-icon>
+              <Calendar />
+            </el-icon>
+            <span class="date" v-text="article.gmtModified"></span>
+          </div>
+        </div>
+        <router-link :to="`/article/${article.id}`" class="title">{{ article.title }}</router-link>
+        <div
+          class="text"
+          v-text="DOMPurify.sanitize(replacePreTags(article.content), { ALLOWED_TAGS: [] })"
+        ></div>
+        <div class="meta footer">
+          <div class="item">
+            <el-tag
+              class="articleSection"
+              effect="dark"
+              @click.stop.prevent="
+                $router.push(`/articles?articleSectionId=${article.articleSection.id}`)
+              "
+              >{{ article.articleSection.sectionName }}</el-tag
+            >
+          </div>
+          <div class="item">
+            <TagItem
+              v-for="tag in article.articleTags"
+              :key="tag.id"
+              :tagName="tag.tagName"
+              :tagId="tag.id!"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
 
 <style lang="less" scoped>
 .article-wrapper {

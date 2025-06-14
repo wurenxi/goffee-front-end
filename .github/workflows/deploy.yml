@@ -48,7 +48,6 @@ jobs:
           SOURCE: 'goffee-front/dist/*'
           # 目标目录
           TARGET: ${{ secrets.USER_FRONT_PATH }}
-          SCRIPT_BEFORE: ssh-keyscan ${{ secrets.USER_HOST }} >> ~/.ssh/known_hosts
 #  build-backstage:
 #    # 运行环境
 #    runs-on: ubuntu-latest

@@ -55,6 +55,7 @@
     "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "^0.35.0"
   },
+  "type": "module",
   "repository": "https://github.com/wurenxi/goffee-front-end.git",
   "author": "GaoFy",
   "license": "MIT"

@@ -91,7 +91,7 @@ const changeTheme = (theme: 'light' | 'dark') => {
                     </li>
                     <li @click="$router.push('/creation')">
                       <svg class="icon pen">
-                        <use xlink:href="#icon-pen"></use>
+                        <use xlink:href="#icon-16"></use>
                       </svg>
                       <span>我的文章</span>
                     </li>

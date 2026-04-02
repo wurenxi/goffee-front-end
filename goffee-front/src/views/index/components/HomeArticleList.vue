@@ -44,7 +44,7 @@ const articleShow = () => {
     selectors.forEach((i) => {
       // 获取当前卡片的高度
       let top = i.offsetHeight + i.offsetTop
-      if (pos >= top - 300) {
+      if (pos >= top - i.offsetWidth * 0.4) {
         i.classList.add('show')
         i.getElementsByClassName('cover')[0].classList.add('lozaded')
       }

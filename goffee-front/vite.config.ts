@@ -58,8 +58,8 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
     server: {
       proxy: {
         '/api': {
-          // target: 'https://goffee.cn',
-          target: 'http://localhost:15801',
+          target: 'https://goffee.cn',
+          // target: 'http://localhost:15801',
           changeOrigin: true
         }
       }

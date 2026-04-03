@@ -8,8 +8,13 @@
       </p>
     </aside>
     <div class="middle">
-      <img src="@/assets/img/beian/备案图标.png" alt="">
-      <a href="https://beian.mps.gov.cn/#/query/webSearch?code=32120202010512" rel="noreferrer" target="_blank">苏公网安备32120202010512</a>
+      <img src="@/assets/img/beian/备案图标.png" alt="" />
+      <a
+        href="https://beian.mps.gov.cn/#/query/webSearch?code=32120202010512"
+        rel="noreferrer"
+        target="_blank"
+        >苏公网安备32120202010512</a
+      >
     </div>
     <div class="right">
       <p>Copyright © 2023-present goffee.cn</p>
@@ -21,7 +26,7 @@
         </a>
         <el-popover placement="top" title="联系我" :width="200" trigger="hover">
           <qrcode-vue
-            style="width: 100%; height: 100%"
+            :style="{ width: '100%', height: '100%' }"
             value="https://qm.qq.com/cgi-bin/qm/qr?k=EqlSblNBXxn-BC8iGxb3dyeZKiPvZGF1&noverify=0&personal_qrcode_source=3"
           />
           <template #reference>
@@ -62,7 +67,7 @@ import QrcodeVue from 'qrcode.vue'
     .font-normal();
 
     a {
-        color: rgb(207, 0, 112);
+      color: rgb(207, 0, 112);
     }
     .one {
       font-size: 2rem;

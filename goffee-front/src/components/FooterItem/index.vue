@@ -1,3 +1,12 @@
+<script lang="ts">
+export default {
+  name: 'FooterItem'
+}
+</script>
+<script setup lang="ts">
+import QrcodeVue from 'qrcode.vue'
+</script>
+
 <template>
   <footer class="footer">
     <aside class="left">
@@ -26,7 +35,8 @@
         </a>
         <el-popover placement="top" title="联系我" :width="200" trigger="hover">
           <qrcode-vue
-            style="width: 100% !important; height: 100% !important"
+            class="qrcode"
+            style="width: 100%; height: 100%"
             value="https://qm.qq.com/cgi-bin/qm/qr?k=EqlSblNBXxn-BC8iGxb3dyeZKiPvZGF1&noverify=0&personal_qrcode_source=3"
           />
           <template #reference>
@@ -45,16 +55,12 @@
   </footer>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'FooterItem'
-}
-</script>
-<script setup lang="ts">
-import QrcodeVue from 'qrcode.vue'
-</script>
-
 <style lang="less" scoped>
+.qrcode {
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (min-width: @mobile-device) {
   .footer {
     width: 100%;

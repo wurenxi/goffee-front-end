@@ -6,7 +6,6 @@
     height: 100%;
     background: url('@/assets/img/steinsgate/login-bg.jpg') center center / cover no-repeat local;
     background-position: top right;
-    background-repeat: no-repeat;
   }
 
   .container {
@@ -97,6 +96,7 @@
         color: #fff;
         .cursor-text();
 
+        &:-webkit-autofill ~ label,
         &:focus ~ label,
         &:valid ~ label {
           top: -5px;

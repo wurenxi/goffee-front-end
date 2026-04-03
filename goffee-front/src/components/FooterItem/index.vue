@@ -36,7 +36,6 @@ import QrcodeVue from 'qrcode.vue'
         <el-popover placement="top" title="联系我" :width="200" trigger="hover">
           <qrcode-vue
             class="qrcode"
-            style="width: 100%; height: 100%"
             value="https://qm.qq.com/cgi-bin/qm/qr?k=EqlSblNBXxn-BC8iGxb3dyeZKiPvZGF1&noverify=0&personal_qrcode_source=3"
           />
           <template #reference>

@@ -5,6 +5,7 @@ export default {
 </script>
 <script setup lang="ts">
 import QrcodeVue from 'qrcode.vue'
+import VueQr from 'vue-qr'
 </script>
 
 <template>
@@ -34,9 +35,12 @@ import QrcodeVue from 'qrcode.vue'
           </svg>
         </a>
         <el-popover placement="top" title="联系我" :width="200" trigger="hover">
-          <qrcode-vue
-            class="qrcode"
-            value="https://qm.qq.com/cgi-bin/qm/qr?k=EqlSblNBXxn-BC8iGxb3dyeZKiPvZGF1&noverify=0&personal_qrcode_source=3"
+          <!--          <qrcode-vue-->
+          <!--            class="qrcode"-->
+          <!--            value="https://qm.qq.com/cgi-bin/qm/qr?k=EqlSblNBXxn-BC8iGxb3dyeZKiPvZGF1&noverify=0&personal_qrcode_source=3"-->
+          <!--          />-->
+          <vue-qr
+            text="https://qm.qq.com/cgi-bin/qm/qr?k=EqlSblNBXxn-BC8iGxb3dyeZKiPvZGF1&noverify=0&personal_qrcode_source=3"
           />
           <template #reference>
             <svg width="35" height="35">

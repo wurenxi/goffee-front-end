@@ -7,7 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 // prismjs
-import prismjs from 'vite-plugin-prismjs'
+import { prismjsPlugin } from 'vite-plugin-prismjs'
 
 function resolvePath(path: string) {
   return resolve(__dirname, path)
@@ -29,7 +29,7 @@ export default defineConfig(({ mode }: ConfigEnv): UserConfig => {
         extensions: ['vue'],
         resolvers: [ElementPlusResolver()]
       }),
-      prismjs({
+      prismjsPlugin({
         languages: 'all',
         plugins: ['show-language', 'line-numbers', 'copy-to-clipboard'], // 显示语言
         theme: 'okaidia', // 主题名称,

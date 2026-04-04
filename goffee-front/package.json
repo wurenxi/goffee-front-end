@@ -1,7 +1,6 @@
 {
   "name": "goffee-front",
   "version": "1.0.0",
-  "private": true,
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -28,7 +27,7 @@
     "nprogress": "^0.2.0",
     "pinia": "^2.0.32",
     "pinia-plugin-persist": "^1.0.0",
-    "prismjs": "^1.29.0",
+    "prismjs": "^1.30.0",
     "qiniu": "^7.11.0",
     "qiniu-js": "^3.4.2",
     "qrcode.vue": "^3.4.0",

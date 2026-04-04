@@ -30,7 +30,6 @@
     "prismjs": "^1.30.0",
     "qiniu": "^7.11.0",
     "qiniu-js": "^3.4.2",
-    "qrcode.vue": "^3.4.0",
     "tinymce": "^6.8.3",
     "unist-util-map": "^4.0.0",
     "vue": "^3.4.21",

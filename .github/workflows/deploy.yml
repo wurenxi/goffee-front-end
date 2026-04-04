@@ -12,16 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 20.10.0 ]
+        node-version: [ 24.10.0 ]
     # 步骤
     steps:
       - name: 迁出代码
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
       - name: 查看当前工作目录文件
         run: ls -l
       # 安装 node.js
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
       # 安装依赖
@@ -53,16 +53,16 @@ jobs:
 #    runs-on: ubuntu-latest
 #    strategy:
 #      matrix:
-#        node-version: [ 20.10.0 ]
+#        node-version: [ 24.10.0 ]
 #    # 步骤
 #    steps:
 #      - name: 迁出代码
-#        uses: actions/checkout@v3
+#        uses: actions/checkout@v5
 #      - name: 查看当前工作目录文件
 #        run: ls -l
 #      # 安装 node.js
 #      - name: Use Node.js ${{ matrix.node-version }}
-#        uses: actions/setup-node@v3
+#        uses: actions/setup-node@v5
 #        with:
 #          node-version: ${{ matrix.node-version }}
 #      # 安装依赖

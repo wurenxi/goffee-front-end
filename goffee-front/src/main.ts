@@ -7,7 +7,7 @@ import router from './router'
 // tailwind 样式
 import '@/assets/styles/tailwind/preflight.css'
 import '@/assets/styles/tailwind/index.css'
-// element-plus css
+// element-plus style
 import 'element-plus/dist/index.css'
 // iconfont
 import '@/assets/fonts/iconfont.js'
@@ -17,7 +17,7 @@ import mitt from 'mitt'
 import '@/assets/styles/theme/theme.less'
 // 代码高亮
 import 'prismjs'
-// animate.css
+// animate.style
 import 'animate.css'
 // useHead
 import { createHead } from '@vueuse/head'

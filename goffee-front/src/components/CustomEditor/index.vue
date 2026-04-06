@@ -51,7 +51,7 @@ const editorInit = {
   language: 'zh_CN',
   theme: 'silver',
   skin_url: '/tinymce/skins/ui/tinymce-5-dark',
-  content_css: '/tinymce/skins/content/tinymce-5-dark/content.min.css',
+  content_css: '/tinymce/skins/content/tinymce-5-dark/content.min.style',
   branding: false,
   height: 500,
   plugins: [
@@ -103,9 +103,9 @@ const editorInit = {
   setup: (editor: typeof Editor) => {
     editor.on('keydown', (e: KeyboardEvent) => {
       if (e.key === 'Tab') {
-        if(e.shiftKey) {
+        if (e.shiftKey) {
           editor.execCommand('Outdent')
-        }else {
+        } else {
           editor.execCommand('Indent')
         }
         e.preventDefault()

@@ -54,6 +54,7 @@ declare module '@vue/runtime-core' {
     TagItem: typeof import('./src/components/TagItem/index.vue')['default']
     Tools: typeof import('./src/components/TopNavBar/components/Tools.vue')['default']
     TopNavBar: typeof import('./src/components/TopNavBar/index.vue')['default']
+    ToTop: typeof import('./src/components/ToTop/index.vue')['default']
   }
   export interface ComponentCustomProperties {
     vLoading: typeof import('element-plus/es')['ElLoadingDirective']
